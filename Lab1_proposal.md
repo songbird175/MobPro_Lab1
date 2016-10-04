@@ -6,7 +6,8 @@
 
 **Repo**: [songbird175/MobPro_Lab1](https://github.com/songbird175/MobPro_Lab1)
 
-**Divide Up Work**: 
+**Divide Up Work**:
+
 Mary: Create Feedback function (customer clicks button, goes to new fragment, does cool stuff, can be seen in Chef mode and maybe the Chef reports them on FB and sends them hate mail idk we’ll see)
 
 Celina: Create and store the menu as a list which customers can open and chefs can edit
