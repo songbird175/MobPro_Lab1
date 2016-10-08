@@ -7,6 +7,9 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
+
+import java.util.ArrayList;
 
 
 public class CustomerMenu extends Fragment {
@@ -20,9 +23,13 @@ public class CustomerMenu extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_customer_menu, container, false);
+        Context context = getContext();
 
-
-
+        //most of this should be created by the ChefMenu fragment
+        ArrayList<MenuList> menuList = new ArrayList<>();
+        final MenuAdapter menuAdapter = new MenuAdapter(context, menuList);
+        ListView menuView = (ListView) view.findViewById(R.id.cust_menu_list);
+        menuView.setAdapter(menuAdapter);
 
         return view;
     }

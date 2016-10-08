@@ -38,6 +38,7 @@ public class CustomerOrder extends Fragment {
         View.OnClickListener add_listener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //this should transition to CustomerMenu, all this should happen there
                 ArrayList<Ingredient> ingredients = new ArrayList<>();
                 FoodItem new_item = new FoodItem("Bob",ingredients);
                 orderAdapter.add(new_item); //uses built-in adapter function to add to list
