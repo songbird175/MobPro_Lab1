@@ -11,14 +11,13 @@ import java.util.ArrayList;
  */
 public class FoodItemAdapter extends ArrayAdapter{
 
-    private ArrayList<Ingredient> ingredients;
+    private ArrayList<FoodItem> dishes;
     private Context context;
 
-    public FoodItemAdapter(Context context, ArrayList<Ingredient> ingredients){
-        super(context, 0, ingredients);
-        this.ingredients = ingredients;
+    public FoodItemAdapter(Context context, ArrayList<FoodItem> dishes){
+        super(context, 0, dishes);
+        this.dishes = dishes;
         this.context = context;
 
     }
-
 }

@@ -7,9 +7,9 @@ import java.util.ArrayList;
  */
 public class FoodItem {
     private String name;
-    private ArrayList<String> ingredients;
+    private ArrayList<Ingredient> ingredients;
 
-    private FoodItem(String name, ArrayList<String> ingredients){
+    public FoodItem(String name, ArrayList<Ingredient> ingredients){
         this.name = name;
         this.ingredients = ingredients;
     }
@@ -22,11 +22,11 @@ public class FoodItem {
         this.name = name;
     }
 
-    public ArrayList<String> getIngredients() {
+    public ArrayList<Ingredient> getIngredients() {
         return ingredients;
     }
 
-    public void setIngredients(ArrayList<String> ingredients) {
+    public void setIngredients(ArrayList<Ingredient> ingredients) {
         this.ingredients = ingredients;
     }
 }

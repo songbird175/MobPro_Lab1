@@ -1,5 +1,6 @@
 package celmafmary.mobprolab1;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -22,15 +23,21 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        Context context = this;
 
-        ArrayList<FoodItem> foodItems = new ArrayList<>();
-        ArrayList<Orders> orders = new ArrayList<>();
-        FoodItemAdapter foodItemAdapter = new FoodItemAdapter(this,R.layout.activity_main,foodItems); //placeholder layout (it does not exist)
-        OrderAdapter orderAdapter = new OrderAdapter(this,R.layout.activity_main,Orders); //placeholder layout
-        ListView foodItemView = (ListView) findViewById(R.id.app_list); //app_list has no reference
-        ListView ordersView = (ListView) findViewById(R.id.app_list); //app_list has no reference
-        foodItemView.setAdapter(foodItemAdapter);
-        ordersView.setAdapter(orderAdapter);
+////        ArrayList<Ingredient> ingredients = new ArrayList<>();
+//        ArrayList<FoodItem> foodItems = new ArrayList<>();
+//        ArrayList<Orders> orders = new ArrayList<>();
+////        ArrayList<MenuList> menu = new ArrayList<>();
+////        IngredientAdapter ingredientAdapter = new IngredientAdapter(this,ingredients);
+//        FoodItemAdapter foodItemAdapter = new FoodItemAdapter(this,foodItems);
+//        OrderAdapter orderAdapter = new OrderAdapter(this, orders);
+////        ListView ingredientView = (ListView) findViewById(R.id.app_list);
+////        ListView foodItemView = (ListView) findViewById(R.id.cust_cur_dish_list);
+//        ListView ordersView = (ListView) findViewById(R.id.cust_cur_dish_list);
+////        ingredientView.setAdapter(ingredientAdapter);
+////        foodItemView.setAdapter(foodItemAdapter);
+//        ordersView.setAdapter(orderAdapter);
 
        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -40,6 +47,8 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
+        changeFragment(new MainActivityFragment(), new MainActivityFragment());
     }
 
     @Override
