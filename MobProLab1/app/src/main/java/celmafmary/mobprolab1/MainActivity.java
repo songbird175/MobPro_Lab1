@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -48,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        changeFragment(new MainActivityFragment(), new MainActivityFragment());
+        changeFragment(new MainActivityFragment());
     }
 
     @Override
@@ -73,11 +74,11 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void changeFragment(Fragment oldFragment, Fragment newFragment) {
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.fragment_container, newFragment);
-        transaction.remove(oldFragment);
-        transaction.addToBackStack(null);
+    //switches fragments, new fragment is input
+    public void changeFragment(Fragment fragment) {
+        FragmentManager manager = getSupportFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
+        transaction.replace(R.id.fragment_container, fragment);
         transaction.commit();
     }
 
