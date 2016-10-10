@@ -41,7 +41,7 @@ public class CustomerOrder extends Fragment {
                 //this should transition to CustomerMenu, all this should happen there
                 ArrayList<Ingredient> ingredients = new ArrayList<>();
                 FoodItem new_item = new FoodItem("Bob",ingredients);
-                orderAdapter.add(new_item); //uses built-in adapter function to add to list
+//                FoodItemAdapter.add(new_item); //uses built-in adapter function to add to list
             }
         };
         Button add_btn = (Button) view.findViewById(R.id.cust_add_dish_btn);

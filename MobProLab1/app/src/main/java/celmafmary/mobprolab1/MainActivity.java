@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
-        transaction.add(R.id.fragment_container, new ChefEditMenu());
+        transaction.add(R.id.fragment_container, new CustomerOrder());
         transaction.commit();
         //changeFragment(new MainActivityFragment(), new ChefEditMenu());
 
@@ -49,14 +49,6 @@ public class MainActivity extends AppCompatActivity {
 ////        foodItemView.setAdapter(foodItemAdapter);
 //        ordersView.setAdapter(orderAdapter);
 
-       FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
     }
 
     @Override
