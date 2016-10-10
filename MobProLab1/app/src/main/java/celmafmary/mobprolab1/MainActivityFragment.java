@@ -35,7 +35,6 @@ public class MainActivityFragment extends Fragment {
         View.OnClickListener cust_listener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d("Cust cick","clicked");
 //                ((MainActivity) getActivity()).changeFragment(cust_fragment, cust_fragment); //calls MainActivity method to switch
                 ((MainActivity) getActivity()).changeFragment(new CustomerOrder(), new CustomerOrder()); //calls MainActivity method to switch fragments
             }
