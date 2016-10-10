@@ -27,8 +27,8 @@ public class CustomerOrder extends Fragment {
         View view = inflater.inflate(R.layout.fragment_customer_order, container, false);
         final Context context = getContext();
 
-        ArrayList<Orders> orders = ((MainActivity) getActivity()).getOrders();
-        OrderAdapter orderAdapter = new OrderAdapter(context, orders);
+        ArrayList<FoodItem> currentOrder = ((MainActivity) getActivity()).getCurrentOrder();
+        CustOrderAdapter orderAdapter = new CustOrderAdapter(context, currentOrder);
         ListView ordersView = (ListView) view.findViewById(R.id.cust_cur_dish_list);
         ordersView.setAdapter(orderAdapter);
 

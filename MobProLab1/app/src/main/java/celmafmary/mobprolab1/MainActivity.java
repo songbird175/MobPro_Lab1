@@ -19,8 +19,10 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    ArrayList<MenuList> menuList = new ArrayList<>();
+    ArrayList<FoodItem> menuList = new ArrayList<>();
     ArrayList<Orders> orders = new ArrayList<>();
+    ArrayList<FoodItem> cur_order = new ArrayList<>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,11 +71,11 @@ public class MainActivity extends AppCompatActivity {
         transaction.commit();
     }
 
-    public ArrayList<MenuList> getMenu(){
+    public ArrayList<FoodItem> getMenu(){
         return menuList;
     }
 
-    public void setMenu(ArrayList<MenuList> newMenu){
+    public void setMenu(ArrayList<FoodItem> newMenu){
         menuList = newMenu;
     }
 
@@ -83,6 +85,15 @@ public class MainActivity extends AppCompatActivity {
 
     public void setOrders(ArrayList<Orders> newOrders){
         orders = newOrders;
+    }
+
+    public ArrayList<FoodItem> getCurrentOrder(){
+        return cur_order;
+    }
+
+    public void setCurrentOrder(ArrayList<FoodItem> newItems){
+        cur_order = newItems;
+
     }
 
 }

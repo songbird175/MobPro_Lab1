@@ -26,10 +26,13 @@ public class CustomerMenu extends Fragment {
         View view = inflater.inflate(R.layout.fragment_customer_menu, container, false);
         Context context = getContext();
 
-        ArrayList<MenuList> menuList = ((MainActivity) getActivity()).getMenu();
-        final MenuAdapter menuAdapter = new MenuAdapter(context, menuList);
+        ArrayList<FoodItem> menuList = ((MainActivity) getActivity()).getMenu();
+        final CustFoodItemAdapter menuAdapter = new CustFoodItemAdapter(context, menuList);
         ListView menuView = (ListView) view.findViewById(R.id.cust_menu_list);
         menuView.setAdapter(menuAdapter);
+
+        FoodItem test = new FoodItem("Yum", new ArrayList<Ingredient>());
+        menuAdapter.add(test);
 
         //gives CANCEL button function -- creates listener that waits for a click and moves to CustomerOrder
         View.OnClickListener cancel_listener = new View.OnClickListener() {
@@ -40,8 +43,6 @@ public class CustomerMenu extends Fragment {
         };
         Button cancel_btn = (Button) view.findViewById(R.id.cust_cancel_add_menu_item);
         cancel_btn.setOnClickListener(cancel_listener); //sets up add button
-
-
 
 
         return view;
