@@ -28,13 +28,19 @@ public class ChefEditMenu extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         View view = inflater.inflate(R.layout.fragment_chef_edit_menu, container, false);
+        View view2 = inflater.inflate(R.layout.fragment_chef_menu,container, false);
 
         final ListView listView = (ListView) view.findViewById(R.id.listView);
         final IngredientAdapter adapter = new IngredientAdapter(getContext(), new ArrayList<Ingredient>());
         listView.setAdapter(adapter);
+
+        final ListView listViewDish = (ListView) view2.findViewById(R.id.chef_menu_listview);
         final FoodItemAdapter foodItemAdapter = new FoodItemAdapter(getContext(), new ArrayList<FoodItem>());
-        final ListView listViewDish = (ListView) view.findViewById(R.id.chef_menu_listview);
+        listViewDish.setAdapter(foodItemAdapter);
+
         final TextView dishName = (TextView) view.findViewById(R.id.dish_name);
+        final FoodItem foodItem = new FoodItem("bob", new ArrayList<Ingredient>());
+
 
 
 
@@ -54,11 +60,13 @@ public class ChefEditMenu extends Fragment {
                 alertDialog.setButton(-1, "Done", new DialogInterface.OnClickListener(){
                     @Override
                     public void onClick(DialogInterface dialog, int which){
-                        ArrayList<Ingredient> placeholder = new ArrayList<Ingredient>();
-                        FoodItem newFoodItem = new FoodItem(input.getText().toString(),placeholder);
-                        foodItemAdapter.add(newFoodItem);
+                        //ArrayList<Ingredient> placeholder = new ArrayList<Ingredient>();
+                        //FoodItem newFoodItem = new FoodItem(input.getText().toString(),placeholder);
+
+
                         dishName.setText(input.getText().toString());
-                        newFoodItem.setName(input.getText().toString());
+                        foodItem.setName(input.getText().toString());
+                        foodItemAdapter.add(foodItem);
 
                         //Todo: Can I make this shorter?
 
@@ -104,8 +112,19 @@ public class ChefEditMenu extends Fragment {
         doneButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
-                Log.d("ChefEditMenuDone", "Is done working?");
-                //Todo: fix this so it adds item to Food Item Adapter
+                Log.d("ChefEditMenuDone", foodItem.getName());
+
+                foodItemAdapter.add(foodItem);
+
+                ((MainActivity) getActivity()).changeFragment(new ChefMenu());
+                Log.d("ChefEditMenuDone2", foodItem.getName());
+
+                //Todo: fix this so it adds item to FoodItemAdapter
+                //FoodItem.setName
+                //FoodItem.setIngredients
+                //Add to adapter
+               //Log.d()
+
             }
         });
 

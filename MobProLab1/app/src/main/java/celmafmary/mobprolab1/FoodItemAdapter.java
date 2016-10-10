@@ -1,7 +1,6 @@
 package celmafmary.mobprolab1;
 
 import android.content.Context;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,7 +29,7 @@ public class FoodItemAdapter extends ArrayAdapter<FoodItem>{
     public View getView(final int position, View convertView, ViewGroup parent){
         final FoodItem foodItem = getItem(position);
         if (convertView == null){
-            convertView = LayoutInflater.from(getContext()).inflate(R.layout.food_item, parent, false);
+            convertView = LayoutInflater.from(getContext()).inflate(R.layout.chef_food_item, parent, false);
         }
 
         final TextView individual_food_item = (TextView) convertView.findViewById(R.id.individual_food_item);
