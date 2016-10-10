@@ -4,10 +4,32 @@
     android:layout_height="match_parent"
     tools:context="celmafmary.mobprolab1.CustomerOrder">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="594dp"
+        android:weightSum="1">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:id="@+id/cust_order_page_title"
+            android:text="Add dishes to your order below" />
+
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="390dp"
+            android:id="@+id/cust_cur_dish_list"
+            android:layout_weight="0.31" />
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="104dp"
+            android:layout_height="wrap_content"
+            android:text="+"
+            android:id="@+id/cust_add_dish_btn"
+            android:layout_gravity="right|bottom" />
+
+    </LinearLayout>
 
 </FrameLayout>
