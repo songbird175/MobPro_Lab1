@@ -1,10 +1,12 @@
 package celmafmary.mobprolab1;
 
 import android.content.Context;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -21,6 +23,14 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        transaction.add(R.id.fragment_container, new ChefEditMenu());
+        transaction.commit();
+        //changeFragment(new MainActivityFragment(), new ChefEditMenu());
+
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         Context context = this;
@@ -48,7 +58,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        changeFragment(new MainActivityFragment(), new MainActivityFragment());
     }
 
     @Override
