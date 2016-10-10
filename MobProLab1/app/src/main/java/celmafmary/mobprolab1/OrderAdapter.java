@@ -8,7 +8,7 @@ import java.util.ArrayList;
 /**
  * Created by mafaldaborges on 10/6/16.
  */
-public class OrderAdapter extends ArrayAdapter {
+public class OrderAdapter extends ArrayAdapter<Orders> {
     private ArrayList<Orders> orders;
     private Context context;
 
