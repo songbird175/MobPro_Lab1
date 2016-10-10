@@ -1,13 +1,62 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="celmafmary.mobprolab1.ChefEditMenu">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+    <ListView
+        android:layout_width="271dp"
+        android:layout_height="418dp"
+        android:id="@+id/listView"
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
-</FrameLayout>
+    <Button
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:id="@+id/add_item"
+        android:layout_gravity="right"
+        android:text="Add Item"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Dish Name"
+        android:id="@+id/dish_name"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_above="@+id/listView" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="DONE"
+        android:id="@+id/done"
+        android:layout_below="@+id/listView"
+        android:layout_alignRight="@+id/add_item"
+        android:layout_alignEnd="@+id/add_item"
+        android:layout_marginRight="33dp"
+        android:layout_marginEnd="33dp"
+        android:layout_alignParentEnd="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CANCEL"
+        android:id="@+id/cancel"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="58dp"
+        android:layout_marginStart="58dp" />
+
+
+</RelativeLayout>

@@ -11,12 +11,10 @@ public class Ingredient {
     }
 
     public String getName() {
-
         return name;
     }
 
-    private Ingredient(String name){
+    public Ingredient(String name){
         this.name = name;
-
     }
 }
