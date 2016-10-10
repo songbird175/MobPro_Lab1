@@ -17,4 +17,6 @@ public class MenuAdapter extends ArrayAdapter<MenuList>{
         this.menuList = menuList;
         this.context = context;
     }
+
+
 }

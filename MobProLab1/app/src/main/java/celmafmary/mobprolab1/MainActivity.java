@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
-        transaction.add(R.id.fragment_container, new CustomerOrder());
+        transaction.add(R.id.fragment_container, new ChefEditMenu());
         transaction.commit();
         //changeFragment(new MainActivityFragment(), new ChefEditMenu());
 

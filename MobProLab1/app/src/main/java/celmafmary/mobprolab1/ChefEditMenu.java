@@ -32,11 +32,47 @@ public class ChefEditMenu extends Fragment {
         final ListView listView = (ListView) view.findViewById(R.id.listView);
         final IngredientAdapter adapter = new IngredientAdapter(getContext(), new ArrayList<Ingredient>());
         listView.setAdapter(adapter);
+        final FoodItemAdapter foodItemAdapter = new FoodItemAdapter(getContext(), new ArrayList<FoodItem>());
+        final ListView listViewDish = (ListView) view.findViewById(R.id.chef_menu_listview);
+        final TextView dishName = (TextView) view.findViewById(R.id.dish_name);
+
 
 
 
         Button addButton = (Button) view.findViewById(R.id.add_item);
-        TextView editDish = (TextView) view.findViewById(R.id.dish_name);
+        Button doneButton = (Button) view.findViewById(R.id.done_chef_menu);
+        TextView editDishName = (TextView) view.findViewById(R.id.dish_name);
+
+        editDishName.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                AlertDialog alertDialog = new AlertDialog.Builder(view.getContext()).create();
+                alertDialog.setTitle("Set Dish Name");
+                final EditText input = new EditText(view.getContext());
+                alertDialog.setView(input);
+
+                alertDialog.setButton(-1, "Done", new DialogInterface.OnClickListener(){
+                    @Override
+                    public void onClick(DialogInterface dialog, int which){
+                        ArrayList<Ingredient> placeholder = new ArrayList<Ingredient>();
+                        FoodItem newFoodItem = new FoodItem(input.getText().toString(),placeholder);
+                        foodItemAdapter.add(newFoodItem);
+                        dishName.setText(input.getText().toString());
+                        newFoodItem.setName(input.getText().toString());
+
+                        //Todo: Can I make this shorter?
+
+                    }
+                });
+                alertDialog.setButton(-2, "Cancel", new DialogInterface.OnClickListener(){
+                    @Override
+                    public void onClick(DialogInterface dialogy, int which){
+
+                    }
+                });
+                alertDialog.show();
+            }
+        });
 
 
         addButton.setOnClickListener(new View.OnClickListener(){
@@ -62,6 +98,14 @@ public class ChefEditMenu extends Fragment {
                     }
                 });
                 alertDialog.show();
+            }
+        });
+
+        doneButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                Log.d("ChefEditMenuDone", "Is done working?");
+                //Todo: fix this so it adds item to Food Item Adapter
             }
         });
 
