@@ -19,6 +19,9 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
+    ArrayList<FoodItem> foodItems = new ArrayList<>();
+    ArrayList<Orders> orders = new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,10 +32,10 @@ public class MainActivity extends AppCompatActivity {
         transaction.add(R.id.fragment_container, new MainActivityFragment());
         transaction.commit();
 
-
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         Context context = this;
+
 
 ////        ArrayList<Ingredient> ingredients = new ArrayList<>();
 //        ArrayList<FoodItem> foodItems = new ArrayList<>();
@@ -48,23 +51,8 @@ public class MainActivity extends AppCompatActivity {
 ////        foodItemView.setAdapter(foodItemAdapter);
 //        ordersView.setAdapter(orderAdapter);
 
-//       FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
-//            }
-//        });
 
     }
-
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        // Inflate the menu; this adds items to the action bar if it is present.
-//        getMenuInflater().inflate(R.menu.menu_main, menu);
-//        return true;
-//    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -81,12 +69,28 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void changeFragment(Fragment oldFragment, Fragment newFragment) {
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.fragment_container, newFragment);
-        transaction.remove(oldFragment);
-        transaction.addToBackStack(null);
+    //switches fragments, new fragment is input
+    public void changeFragment(Fragment fragment) {
+        FragmentManager manager = getSupportFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
+        transaction.replace(R.id.fragment_container, fragment);
         transaction.commit();
+    }
+
+    public ArrayList<FoodItem> getFoodItems(){
+        return foodItems;
+    }
+
+    public void setFoodItems(ArrayList<FoodItem> newFoodItems){
+        foodItems = newFoodItems;
+    }
+
+    public ArrayList<Orders> getOrders(){
+        return orders;
+    }
+
+    public void setOrders(ArrayList<Orders> newOrders){
+        orders = newOrders;
     }
 
 }

@@ -28,20 +28,18 @@ public class CustomerOrder extends Fragment {
         final Context context = getContext();
 
         //Took from MainActivity, I only need this for this fragment anyway
-        ArrayList<Orders> orders = new ArrayList<>();
-        final OrderAdapter orderAdapter = new OrderAdapter(context, orders);
+
+
+        ArrayList<Orders> orders = ((MainActivity) getActivity()).getOrders();
+        OrderAdapter orderAdapter = new OrderAdapter(context, orders);
         ListView ordersView = (ListView) view.findViewById(R.id.cust_cur_dish_list);
         ordersView.setAdapter(orderAdapter);
-        Log.d("moved","but did we");
 
         //gives ADD button function -- creates listener that waits for a click and adds a new list item to cur_dish_list
         View.OnClickListener add_listener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //this should transition to CustomerMenu, all this should happen there
-                ArrayList<Ingredient> ingredients = new ArrayList<>();
-                FoodItem new_item = new FoodItem("Bob",ingredients);
-                orderAdapter.add(new_item); //uses built-in adapter function to add to list
+                ((MainActivity) getActivity()).changeFragment(new CustomerMenu());
             }
         };
         Button add_btn = (Button) view.findViewById(R.id.cust_add_dish_btn);

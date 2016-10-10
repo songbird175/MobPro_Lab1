@@ -8,7 +8,7 @@ import java.util.ArrayList;
 /**
  * Created by mary on 10/8/16.
  */
-public class MenuAdapter extends ArrayAdapter{
+public class MenuAdapter extends ArrayAdapter<MenuList>{
     private ArrayList<MenuList> menuList;
     private Context context;
 
