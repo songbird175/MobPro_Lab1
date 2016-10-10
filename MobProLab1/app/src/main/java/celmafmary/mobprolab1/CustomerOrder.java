@@ -27,9 +27,6 @@ public class CustomerOrder extends Fragment {
         View view = inflater.inflate(R.layout.fragment_customer_order, container, false);
         final Context context = getContext();
 
-        //Took from MainActivity, I only need this for this fragment anyway
-
-
         ArrayList<Orders> orders = ((MainActivity) getActivity()).getOrders();
         OrderAdapter orderAdapter = new OrderAdapter(context, orders);
         ListView ordersView = (ListView) view.findViewById(R.id.cust_cur_dish_list);

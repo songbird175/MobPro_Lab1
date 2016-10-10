@@ -19,7 +19,7 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    ArrayList<FoodItem> foodItems = new ArrayList<>();
+    ArrayList<MenuList> menuList = new ArrayList<>();
     ArrayList<Orders> orders = new ArrayList<>();
 
     @Override
@@ -69,12 +69,12 @@ public class MainActivity extends AppCompatActivity {
         transaction.commit();
     }
 
-    public ArrayList<FoodItem> getFoodItems(){
-        return foodItems;
+    public ArrayList<MenuList> getMenu(){
+        return menuList;
     }
 
-    public void setFoodItems(ArrayList<FoodItem> newFoodItems){
-        foodItems = newFoodItems;
+    public void setMenu(ArrayList<MenuList> newMenu){
+        menuList = newMenu;
     }
 
     public ArrayList<Orders> getOrders(){
