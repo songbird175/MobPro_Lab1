@@ -31,21 +31,29 @@ public class MainActivity extends AppCompatActivity {
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
-        transaction.add(R.id.fragment_container, new CustomerOrder());
+        transaction.add(R.id.fragment_container, new MainActivityFragment());
         transaction.commit();
-        //changeFragment(new MainActivityFragment(), new ChefEditMenu());
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         Context context = this;
 
-    }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
+////        ArrayList<Ingredient> ingredients = new ArrayList<>();
+//        ArrayList<FoodItem> foodItems = new ArrayList<>();
+//        ArrayList<Orders> orders = new ArrayList<>();
+////        ArrayList<MenuList> menu = new ArrayList<>();
+////        IngredientAdapter ingredientAdapter = new IngredientAdapter(this,ingredients);
+//        FoodItemAdapter foodItemAdapter = new FoodItemAdapter(this,foodItems);
+//        OrderAdapter orderAdapter = new OrderAdapter(this, orders);
+////        ListView ingredientView = (ListView) findViewById(R.id.app_list);
+////        ListView foodItemView = (ListView) findViewById(R.id.cust_cur_dish_list);
+//        ListView ordersView = (ListView) findViewById(R.id.cust_cur_dish_list);
+////        ingredientView.setAdapter(ingredientAdapter);
+////        foodItemView.setAdapter(foodItemAdapter);
+//        ordersView.setAdapter(orderAdapter);
+
+
     }
 
     @Override
