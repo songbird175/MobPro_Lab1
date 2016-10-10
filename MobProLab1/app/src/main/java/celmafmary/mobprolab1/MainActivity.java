@@ -19,6 +19,9 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
+    ArrayList<FoodItem> foodItems = new ArrayList<>();
+    ArrayList<Orders> orders = new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,24 +33,9 @@ public class MainActivity extends AppCompatActivity {
         transaction.commit();
         //changeFragment(new MainActivityFragment(), new ChefEditMenu());
 
-
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         Context context = this;
-
-////        ArrayList<Ingredient> ingredients = new ArrayList<>();
-//        ArrayList<FoodItem> foodItems = new ArrayList<>();
-//        ArrayList<Orders> orders = new ArrayList<>();
-////        ArrayList<MenuList> menu = new ArrayList<>();
-////        IngredientAdapter ingredientAdapter = new IngredientAdapter(this,ingredients);
-//        FoodItemAdapter foodItemAdapter = new FoodItemAdapter(this,foodItems);
-//        OrderAdapter orderAdapter = new OrderAdapter(this, orders);
-////        ListView ingredientView = (ListView) findViewById(R.id.app_list);
-////        ListView foodItemView = (ListView) findViewById(R.id.cust_cur_dish_list);
-//        ListView ordersView = (ListView) findViewById(R.id.cust_cur_dish_list);
-////        ingredientView.setAdapter(ingredientAdapter);
-////        foodItemView.setAdapter(foodItemAdapter);
-//        ordersView.setAdapter(orderAdapter);
 
     }
 
@@ -79,6 +67,22 @@ public class MainActivity extends AppCompatActivity {
         FragmentTransaction transaction = manager.beginTransaction();
         transaction.replace(R.id.fragment_container, fragment);
         transaction.commit();
+    }
+
+    public ArrayList<FoodItem> getFoodItems(){
+        return foodItems;
+    }
+
+    public void setFoodItems(ArrayList<FoodItem> newFoodItems){
+        foodItems = newFoodItems;
+    }
+
+    public ArrayList<Orders> getOrders(){
+        return orders;
+    }
+
+    public void setOrders(ArrayList<Orders> newOrders){
+        orders = newOrders;
     }
 
 }

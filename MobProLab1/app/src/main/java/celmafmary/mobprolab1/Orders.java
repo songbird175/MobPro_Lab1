@@ -9,7 +9,7 @@ public class Orders {
     private String customer;
     private ArrayList<FoodItem> orderList;
 
-    private Orders(String customer, ArrayList<FoodItem> orderList){
+    public Orders(String customer, ArrayList<FoodItem> orderList){
         this.customer = customer;
         this.orderList = orderList;
 
