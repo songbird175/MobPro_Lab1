@@ -4,7 +4,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-<<<<<<< HEAD
     <TextView
         android:id="@+id/individual_food_item"
         android:layout_width="wrap_content"
@@ -35,26 +34,3 @@
 
 
 </RelativeLayout>
-=======
-    <TextView xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/dish"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:padding="10dip"
-        android:text="BOBBBB"
-        android:textSize="16dip"
-        android:textStyle="bold" >
-    </TextView>
-
-    <Button
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Delete"
-        android:id="@+id/cust_del_dish_btn"
-        android:layout_marginLeft="259dp"
-        android:layout_marginStart="259dp"
-        android:layout_gravity="right" />
-
-</LinearLayout>
->>>>>>> a71eaa81a3f23bb505afd613393d289f2f121468
