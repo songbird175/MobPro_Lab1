@@ -13,6 +13,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="30dp"
+            android:textSize="20dip"
             android:id="@+id/cust_order_page_title"
             android:text="Add dishes to your order below" />
 
@@ -22,14 +23,35 @@
             android:id="@+id/cust_cur_dish_list"
             android:layout_weight="0.31" />
 
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
         <Button
             style="?android:attr/buttonStyleSmall"
             android:layout_width="104dp"
             android:layout_height="wrap_content"
             android:text="+"
             android:id="@+id/cust_add_dish_btn"
-            android:layout_gravity="right|bottom" />
+            android:layout_gravity="right|bottom"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
 
-    </LinearLayout>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Place Order"
+            android:id="@+id/place_order_btn"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_toStartOf="@+id/cust_add_dish_btn"
+            android:layout_alignRight="@+id/cust_add_dish_btn"
+            android:layout_alignEnd="@+id/cust_add_dish_btn"
+            android:layout_toLeftOf="@+id/cust_add_dish_btn" />
+    </RelativeLayout>
 
 </FrameLayout>

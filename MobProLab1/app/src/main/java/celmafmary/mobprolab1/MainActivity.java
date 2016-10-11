@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<FoodItem> cur_order = new ArrayList<>();
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,12 +33,14 @@ public class MainActivity extends AppCompatActivity {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         //transaction.add(R.id.fragment_container, new MainActivityFragment());
-        transaction.add(R.id.fragment_container, new ChefEditMenu());
+        transaction.add(R.id.fragment_container, new MainActivityFragment());
         transaction.commit();
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         Context context = this;
+        FoodItem chicken = new FoodItem("chicken", new ArrayList<Ingredient>());
+        menuList.add(chicken);
     }
 
     //switches fragments, new fragment is input
