@@ -18,6 +18,8 @@ import android.widget.ListView;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
+    
+
 
     ArrayList<FoodItem> menuList = new ArrayList<>();
     ArrayList<Orders> orders = new ArrayList<>();
