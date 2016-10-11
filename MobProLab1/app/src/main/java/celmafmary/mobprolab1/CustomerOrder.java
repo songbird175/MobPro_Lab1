@@ -52,7 +52,7 @@ public class CustomerOrder extends Fragment {
         View.OnClickListener place_order_listener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                EnterName(currentOrder); //creates popup that gets customer name and updates currentOrders and the orders list in MA
+                PlaceOrder(currentOrder); //creates popup that gets customer name and updates currentOrders and the orders list in MA
             }
         };
         Button place_order_btn = (Button) view.findViewById(R.id.place_order_btn);
@@ -62,7 +62,7 @@ public class CustomerOrder extends Fragment {
     }
 
     //Gives EDIT button function -- creates listener that waits for a click and edits the selected text view
-    public void EnterName(final ArrayList<FoodItem> currentOrder) {
+    public void PlaceOrder(final ArrayList<FoodItem> currentOrder) {
         final AlertDialog.Builder popup_maker = new AlertDialog.Builder(getContext());
         popup_maker //configure popup
                 .setTitle("Ready to order?")

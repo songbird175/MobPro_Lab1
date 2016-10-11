@@ -39,8 +39,12 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         Context context = this;
+
+        //just for testing
         FoodItem chicken = new FoodItem("chicken", new ArrayList<Ingredient>());
         menuList.add(chicken);
+        Orders chickenOrder = new Orders("obviously Bob",menuList);
+        orders.add(chickenOrder);
     }
 
     //switches fragments, new fragment is input

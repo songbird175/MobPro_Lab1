@@ -37,7 +37,7 @@ public class CustFoodItemAdapter extends ArrayAdapter<FoodItem> {
                 ArrayList<FoodItem> currentDishes = ((MainActivity) context).getCurrentOrder();
                 currentDishes.add(selectedDish);
                 ((MainActivity) context).setCurrentOrder(currentDishes);
-//                ((MainActivity) context).changeFragment(new CustomerOrder());
+                ((MainActivity) context).changeFragment(new CustomerOrder());
                 notifyDataSetChanged();
             }
         };
