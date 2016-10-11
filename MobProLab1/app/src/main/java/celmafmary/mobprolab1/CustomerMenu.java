@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -30,6 +31,16 @@ public class CustomerMenu extends Fragment {
         final MenuAdapter menuAdapter = new MenuAdapter(context, menuList);
         ListView menuView = (ListView) view.findViewById(R.id.cust_menu_list);
         menuView.setAdapter(menuAdapter);
+
+        //gives CANCEL button function -- creates listener that waits for a click and moves to CustomerOrder
+        View.OnClickListener cancel_listener = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ((MainActivity) getActivity()).changeFragment(new CustomerOrder());
+            }
+        };
+        Button cancel_btn = (Button) view.findViewById(R.id.cust_cancel_add_menu_item);
+        cancel_btn.setOnClickListener(cancel_listener); //sets up add button
 
         return view;
     }

@@ -21,6 +21,9 @@ public class MainActivity extends AppCompatActivity {
     
 
 
+    ArrayList<FoodItem> foodItems = new ArrayList<>();
+    ArrayList<Orders> orders = new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,22 +31,13 @@ public class MainActivity extends AppCompatActivity {
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
-        transaction.add(R.id.fragment_container, new ChefEditMenu());
+        transaction.add(R.id.fragment_container, new MainActivityFragment());
         transaction.commit();
-        //changeFragment(new MainActivityFragment(), new ChefEditMenu());
-
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         Context context = this;
-
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
+        
     }
 
     @Override
@@ -67,6 +61,22 @@ public class MainActivity extends AppCompatActivity {
         FragmentTransaction transaction = manager.beginTransaction();
         transaction.replace(R.id.fragment_container, fragment);
         transaction.commit();
+    }
+
+    public ArrayList<FoodItem> getFoodItems(){
+        return foodItems;
+    }
+
+    public void setFoodItems(ArrayList<FoodItem> newFoodItems){
+        foodItems = newFoodItems;
+    }
+
+    public ArrayList<Orders> getOrders(){
+        return orders;
+    }
+
+    public void setOrders(ArrayList<Orders> newOrders){
+        orders = newOrders;
     }
 
 }
