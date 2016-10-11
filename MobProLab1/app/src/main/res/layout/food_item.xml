@@ -4,39 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:weightSum="1">
-
-<<<<<<< HEAD
-    <TextView
-        android:id="@+id/individual_food_item"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Empty"
-        android:clickable="true"
-        />
-
-
-
-    <Button
-        android:id="@+id/delete_food_item"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:text="Delete"
-        />
-
-    <Button
-        android:id="@+id/edit_food_item"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Edit"
-        android:layout_alignParentTop="true"
-        android:layout_toLeftOf="@+id/delete_food_item"
-        android:layout_toStartOf="@+id/delete_food_item" />
-
-
-</RelativeLayout>
-=======
+    
     <TextView xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/dish"
         android:layout_width="fill_parent"
@@ -58,5 +26,4 @@
         android:layout_marginStart="259dp"
         android:layout_gravity="right" />
 
-</LinearLayout>
->>>>>>> a71eaa81a3f23bb505afd613393d289f2f121468
+</RelativeLayout>
