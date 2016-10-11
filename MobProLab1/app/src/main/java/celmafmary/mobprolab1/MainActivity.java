@@ -21,8 +21,10 @@ public class MainActivity extends AppCompatActivity {
     
 
 
-    ArrayList<FoodItem> foodItems = new ArrayList<>();
+    ArrayList<FoodItem> menuList = new ArrayList<>();
     ArrayList<Orders> orders = new ArrayList<>();
+    ArrayList<FoodItem> cur_order = new ArrayList<>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         Context context = this;
-        
+
     }
 
     @Override
@@ -63,12 +65,12 @@ public class MainActivity extends AppCompatActivity {
         transaction.commit();
     }
 
-    public ArrayList<FoodItem> getFoodItems(){
-        return foodItems;
+    public ArrayList<FoodItem> getMenu(){
+        return menuList;
     }
 
-    public void setFoodItems(ArrayList<FoodItem> newFoodItems){
-        foodItems = newFoodItems;
+    public void setMenu(ArrayList<FoodItem> newMenu){
+        menuList = newMenu;
     }
 
     public ArrayList<Orders> getOrders(){
@@ -77,6 +79,15 @@ public class MainActivity extends AppCompatActivity {
 
     public void setOrders(ArrayList<Orders> newOrders){
         orders = newOrders;
+    }
+
+    public ArrayList<FoodItem> getCurrentOrder(){
+        return cur_order;
+    }
+
+    public void setCurrentOrder(ArrayList<FoodItem> newItems){
+        cur_order = newItems;
+
     }
 
 }
