@@ -1,6 +1,7 @@
 package celmafmary.mobprolab1;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,10 +27,13 @@ public class CustFoodItemAdapter extends ArrayAdapter<FoodItem> {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.cust_menu_item, parent, false);
         }
 
+        TextView tvName = (TextView) convertView.findViewById(R.id.cust_menu_list_item);
+        tvName.setText(foodItem.getName());
+
         View.OnClickListener add_listener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FoodItem selectedDish = dishes.get(position); //gets fooditem with that index
+                FoodItem selectedDish = dishes.get(position); //gets foodItem with that index
                 ArrayList<FoodItem> currentDishes = ((MainActivity) context).getCurrentOrder();
                 currentDishes.add(selectedDish);
                 ((MainActivity) context).setCurrentOrder(currentDishes);
@@ -37,8 +41,7 @@ public class CustFoodItemAdapter extends ArrayAdapter<FoodItem> {
                 notifyDataSetChanged();
             }
         };
-        TextView add_to_order = (TextView) convertView.findViewById(R.id.cust_menu_list_item);
-        add_to_order.setOnClickListener(add_listener);
+        tvName.setOnClickListener(add_listener);
         return convertView;
     }
 }

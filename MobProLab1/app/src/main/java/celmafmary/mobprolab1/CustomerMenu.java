@@ -9,6 +9,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -26,13 +29,11 @@ public class CustomerMenu extends Fragment {
         View view = inflater.inflate(R.layout.fragment_customer_menu, container, false);
         Context context = getContext();
 
+        //retrieve menuList from Main Activity, set to corresponding adapter and list view
         ArrayList<FoodItem> menuList = ((MainActivity) getActivity()).getMenu();
         final CustFoodItemAdapter menuAdapter = new CustFoodItemAdapter(context, menuList);
         ListView menuView = (ListView) view.findViewById(R.id.cust_menu_list);
         menuView.setAdapter(menuAdapter);
-
-        FoodItem test = new FoodItem("Yum", new ArrayList<Ingredient>());
-        menuAdapter.add(test);
 
         //gives CANCEL button function -- creates listener that waits for a click and moves to CustomerOrder
         View.OnClickListener cancel_listener = new View.OnClickListener() {
@@ -43,7 +44,6 @@ public class CustomerMenu extends Fragment {
         };
         Button cancel_btn = (Button) view.findViewById(R.id.cust_cancel_add_menu_item);
         cancel_btn.setOnClickListener(cancel_listener); //sets up add button
-
 
         return view;
     }
