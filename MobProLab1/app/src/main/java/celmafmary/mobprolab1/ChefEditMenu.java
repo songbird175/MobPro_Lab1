@@ -44,6 +44,7 @@ public class ChefEditMenu extends Fragment {
 
         Button addButton = (Button) view.findViewById(R.id.add_item);
         Button doneButton = (Button) view.findViewById(R.id.done_chef_menu);
+        Button cancelButton = (Button) view.findViewById(R.id.cancel_chef_menu);
         TextView editDishName = (TextView) view.findViewById(R.id.dish_name);
 
         editDishName.setOnClickListener(new View.OnClickListener(){
@@ -105,6 +106,13 @@ public class ChefEditMenu extends Fragment {
             @Override
             public void onClick(View view){
                 ((MainActivity) getActivity()).addToMenu(foodItem);
+                ((MainActivity) getActivity()).changeFragment(new ChefMenu());
+            }
+        });
+
+        cancelButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick (View view){
                 ((MainActivity) getActivity()).changeFragment(new ChefMenu());
             }
         });
