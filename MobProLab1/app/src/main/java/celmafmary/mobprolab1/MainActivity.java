@@ -33,7 +33,8 @@ public class MainActivity extends AppCompatActivity {
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
-        transaction.add(R.id.fragment_container, new MainActivityFragment());
+        //transaction.add(R.id.fragment_container, new MainActivityFragment());
+        transaction.add(R.id.fragment_container, new ChefEditMenu());
         transaction.commit();
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -71,6 +72,10 @@ public class MainActivity extends AppCompatActivity {
 
     public void setMenu(ArrayList<FoodItem> newMenu){
         menuList = newMenu;
+    }
+    public void addToMenu(FoodItem foodItem){
+        menuList.add(foodItem);
+
     }
 
     public ArrayList<Orders> getOrders(){

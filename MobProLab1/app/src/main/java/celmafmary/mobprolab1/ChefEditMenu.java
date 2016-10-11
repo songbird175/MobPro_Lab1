@@ -42,9 +42,6 @@ public class ChefEditMenu extends Fragment {
         final FoodItem foodItem = new FoodItem("bob", new ArrayList<Ingredient>());
 
 
-
-
-
         Button addButton = (Button) view.findViewById(R.id.add_item);
         Button doneButton = (Button) view.findViewById(R.id.done_chef_menu);
         TextView editDishName = (TextView) view.findViewById(R.id.dish_name);
@@ -60,15 +57,9 @@ public class ChefEditMenu extends Fragment {
                 alertDialog.setButton(-1, "Done", new DialogInterface.OnClickListener(){
                     @Override
                     public void onClick(DialogInterface dialog, int which){
-                        //ArrayList<Ingredient> placeholder = new ArrayList<Ingredient>();
-                        //FoodItem newFoodItem = new FoodItem(input.getText().toString(),placeholder);
-
-
                         dishName.setText(input.getText().toString());
                         foodItem.setName(input.getText().toString());
                         foodItemAdapter.add(foodItem);
-
-                        //Todo: Can I make this shorter?
 
                     }
                 });
@@ -97,6 +88,7 @@ public class ChefEditMenu extends Fragment {
                     public void onClick(DialogInterface dialog, int which){
                         Ingredient newIngredient = new Ingredient(input.getText().toString());
                         adapter.add(newIngredient);
+                        //Todo: I don't think I am actually saving the ingredients
                     }
                 });
                 alertDialog.setButton(-2, "Cancel", new DialogInterface.OnClickListener() {
@@ -112,19 +104,8 @@ public class ChefEditMenu extends Fragment {
         doneButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
-                Log.d("ChefEditMenuDone", foodItem.getName());
-
-                foodItemAdapter.add(foodItem);
-
+                ((MainActivity) getActivity()).addToMenu(foodItem);
                 ((MainActivity) getActivity()).changeFragment(new ChefMenu());
-                Log.d("ChefEditMenuDone2", foodItem.getName());
-
-                //Todo: fix this so it adds item to FoodItemAdapter
-                //FoodItem.setName
-                //FoodItem.setIngredients
-                //Add to adapter
-               //Log.d()
-
             }
         });
 

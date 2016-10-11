@@ -33,6 +33,7 @@ public class FoodItemAdapter extends ArrayAdapter<FoodItem>{
         }
 
         final TextView individual_food_item = (TextView) convertView.findViewById(R.id.individual_food_item);
+        individual_food_item.setText(foodItem.getName());
         Button deleteButton = (Button) convertView.findViewById(R.id.delete_food_item);
         Button editButton = (Button) convertView.findViewById(R.id.edit_food_item);
 
