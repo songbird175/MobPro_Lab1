@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 public class ChefOrder extends Fragment {
+//    private Fragment TabHost = mTabHost;
 
     public ChefOrder() {
         // Required empty public constructor

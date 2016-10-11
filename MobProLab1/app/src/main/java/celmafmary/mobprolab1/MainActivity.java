@@ -51,7 +51,6 @@ public class MainActivity extends AppCompatActivity {
 ////        foodItemView.setAdapter(foodItemAdapter);
 //        ordersView.setAdapter(orderAdapter);
 
-
     }
 
     @Override
