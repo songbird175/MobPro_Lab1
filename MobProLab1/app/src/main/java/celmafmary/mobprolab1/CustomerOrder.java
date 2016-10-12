@@ -28,7 +28,6 @@ public class CustomerOrder extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        Log.d("ORDER","on the ORDER page");
 
         View view = inflater.inflate(R.layout.fragment_customer_order, container, false);
         final Context context = getContext();
