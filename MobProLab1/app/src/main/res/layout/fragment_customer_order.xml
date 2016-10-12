@@ -17,11 +17,18 @@
             android:id="@+id/cust_order_page_title"
             android:text="Add dishes to your order below" />
 
-        <ListView
+        <!--<ListView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="390dp"-->
+            <!--android:id="@+id/cust_cur_dish_list"-->
+            <!--android:layout_weight="0.31" />-->
+
+        <ExpandableListView
             android:layout_width="match_parent"
-            android:layout_height="390dp"
-            android:id="@+id/cust_cur_dish_list"
-            android:layout_weight="0.31" />
+            android:layout_height="400dp"
+            android:id="@+id/cust_order_list"
+            android:focusable="false"
+            android:clickable="true" />
 
     </LinearLayout>
 

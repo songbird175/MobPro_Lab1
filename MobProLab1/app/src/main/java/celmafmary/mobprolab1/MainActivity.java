@@ -43,13 +43,18 @@ public class MainActivity extends AppCompatActivity {
         //just for testing
         Ingredient bird = new Ingredient("bird");
         Ingredient gravy = new Ingredient("gravy");
+        Ingredient lettuce = new Ingredient("lettuce");
         ArrayList<Ingredient> chickenParts = new ArrayList<>();
+        ArrayList<Ingredient> saladParts = new ArrayList<>();
         chickenParts.add(bird);
         chickenParts.add(gravy);
+        saladParts.add(lettuce);
         FoodItem chicken = new FoodItem("chicken", chickenParts);
+        FoodItem salad = new FoodItem("salad", saladParts);
         menuList.add(chicken);
-        Orders chickenOrder = new Orders("obviously Bob",menuList);
-        orders.add(chickenOrder);
+        menuList.add(salad);
+        Orders mealOrder = new Orders("obviously Bob",menuList);
+        orders.add(mealOrder);
     }
 
     //switches fragments, new fragment is input

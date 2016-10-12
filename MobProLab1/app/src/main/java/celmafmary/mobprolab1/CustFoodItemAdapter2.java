@@ -9,6 +9,8 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
 import android.widget.ListView;
@@ -17,6 +19,7 @@ import android.widget.TextView;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
 
@@ -69,13 +72,44 @@ public class CustFoodItemAdapter2 extends BaseExpandableListAdapter {
         };
         Button expand_btn = (Button) convertView.findViewById(R.id.cust_expand_dish);
         expand_btn.setOnClickListener(expand_listener); //sets up add button
-        expand_btn.setFocusable(false);
+
+//        //gives ADD button function -- creates listener that waits for a click and adds dish to currentOrder
+//        View.OnClickListener add_listener = new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                FoodItem selectedDish = dishes.get(groupPosition); //use position as index to find selected foodItem from list dishes
+//                ArrayList<FoodItem> currentOrder = ((MainActivity) context).getCurrentOrder(); //get current order and store as list currentDishes
+//                currentOrder.add(selectedDish); //add selected dish
+//                ((MainActivity) context).setCurrentOrder(currentOrder); //set current order to include latest dish
+//                ((MainActivity) context).changeFragment(new CustomerOrder()); //go back to order page
+//                notifyDataSetChanged();
+//            }
+//        };
+//        Button add_btn = (Button) convertView.findViewById(R.id.cust_add_dish_exp_btn);
+//        add_btn.setOnClickListener(add_listener); //sets up add button
+
+        CheckBox dish_checked = (CheckBox) convertView.findViewById(R.id.cust_add_dish_checkbox);
+        dish_checked.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+           @Override
+           public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+               FoodItem selectedDish = dishes.get(groupPosition); //use position as index to find selected foodItem from list dishes
+               ArrayList<FoodItem> currentOrder = ((MainActivity) context).getCurrentOrder(); //get current order and store as list currentDishes
+               if (isChecked == true){
+                   currentOrder.add(selectedDish); //add selected dish
+               }
+               else if (isChecked == false) {
+                   currentOrder.remove(selectedDish); //remove selected dish
+               }
+               ((MainActivity) context).setCurrentOrder(currentOrder); //set current order to include latest dish
+               notifyDataSetChanged();
+           }
+        });
 
         return convertView;
     }
 
     @Override
-    public View getChildView(int groupPosition, int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
+    public View getChildView(final int groupPosition, final int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
         final String ingredientName = (String) getChild(groupPosition, childPosition);
 
         if (convertView == null) {
@@ -87,6 +121,30 @@ public class CustFoodItemAdapter2 extends BaseExpandableListAdapter {
         TextView tvName = (TextView) convertView.findViewById(R.id.cust_item_ingred);
         tvName.setTypeface(null, Typeface.BOLD);
         tvName.setText(ingredientName);
+
+//        CheckBox ingred_checked = (CheckBox) convertView.findViewById(R.id.cust_add_ingred_checkbox);
+//        ingred_checked.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+//           @Override
+//           public void onCheckedChanged(CompoundButton buttonView,boolean isChecked) {
+//               FoodItem selectedDish = dishes.get(groupPosition); //use position as index to find selected foodItem from list dishes
+//               ArrayList<FoodItem> currentOrder = ((MainActivity) context).getCurrentOrder(); //get current order and store as list currentDishes
+//               if (currentOrder.contains(selectedDish)) { //basically, only make changes if the dish is checked
+//                   Ingredient selectedIng = selectedDish.getIngredients().get(childPosition); //get selected ingredient for that dish
+//                   ArrayList<Ingredient> dishIngreds = selectedDish.getIngredients(); //get list of ingredients for that dish
+//                   if (isChecked == true){
+//                       if (dishIngreds.get(childPosition) == selectedIng){} //if the ingredient is already part of the dish, do nothing (otherwise would have 2 because it starts with 1)
+//                       else {
+//                           dishIngreds.add(selectedIng); //otherwise, add it
+//                       }}
+//                   else if (isChecked == false) {
+//                       dishIngreds.remove(childPosition); //remove the dish -- it must have already been added so it can be removed
+//                   }
+////                   selectedDish.setIngredients(dishIngreds);
+//                   currentOrder.get(groupPosition).setIngredients(dishIngreds);
+//                   ((MainActivity) context).setCurrentOrder(currentOrder); //set current order to include latest dish
+//                   notifyDataSetChanged();
+//           }}
+//        });
 
         return convertView;
     }
