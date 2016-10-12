@@ -4,10 +4,13 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ExpandableListView;
+import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -31,9 +34,35 @@ public class CustomerMenu extends Fragment {
 
         //retrieve menuList from Main Activity, set to corresponding adapter and list view
         ArrayList<FoodItem> menuList = ((MainActivity) getActivity()).getMenu();
-        final CustFoodItemAdapter menuAdapter = new CustFoodItemAdapter(context, menuList);
-        ListView menuView = (ListView) view.findViewById(R.id.cust_menu_list);
+        final CustFoodItemAdapter2 menuAdapter = new CustFoodItemAdapter2(context, menuList);
+        ExpandableListView menuView = (ExpandableListView) view.findViewById(R.id.cust_menu_list);
         menuView.setAdapter(menuAdapter);
+
+//        menuView.setOnGroupClickListener(new android.widget.ExpandableListView.OnGroupClickListener() {
+//            @Override
+//            public boolean onGroupClick(ExpandableListView parent, View v, int groupPosition, long id) {
+//                Log.d("FML","clicked");
+//                parent.expandGroup(groupPosition);
+//                return true;
+//            }
+//        });
+
+//        menuView.setOnGroupClickListener(new android.widget.ExpandableListView.OnGroupClickListener() {
+//             @Override
+//             public boolean onGroupClick(ExpandableListView parent, View v, int groupPosition, long id) {
+//                 Log.d("FML","clicked");
+//                 parent.expandGroup(groupPosition);
+//                 return false;
+//             }
+//         });
+
+//        menuView.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
+//            @Override
+//            public void onGroupExpand(int groupPosition) {
+//                Log.d("onGroupClick:", "worked");
+//            }
+//        });
+//
 
         //gives CANCEL button function -- creates listener that waits for a click and moves to CustomerOrder
         View.OnClickListener cancel_listener = new View.OnClickListener() {

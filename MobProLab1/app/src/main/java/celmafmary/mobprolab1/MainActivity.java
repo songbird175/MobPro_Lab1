@@ -41,7 +41,12 @@ public class MainActivity extends AppCompatActivity {
         Context context = this;
 
         //just for testing
-        FoodItem chicken = new FoodItem("chicken", new ArrayList<Ingredient>());
+        Ingredient bird = new Ingredient("bird");
+        Ingredient gravy = new Ingredient("gravy");
+        ArrayList<Ingredient> chickenParts = new ArrayList<>();
+        chickenParts.add(bird);
+        chickenParts.add(gravy);
+        FoodItem chicken = new FoodItem("chicken", chickenParts);
         menuList.add(chicken);
         Orders chickenOrder = new Orders("obviously Bob",menuList);
         orders.add(chickenOrder);
