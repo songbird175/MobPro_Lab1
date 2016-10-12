@@ -6,7 +6,7 @@
     android:background="#87AFC7">
 
     <TextView
-        android:id="@+id/cust_item_ingred"
+        android:id="@+id/cust_order_ingred_tv"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:textSize="17dip"
@@ -18,14 +18,5 @@
         android:textColor="#D1D0CE"
         android:paddingLeft="?android:attr/expandableListPreferredChildPaddingLeft" />
 
-    <CheckBox
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Exclude"
-        android:id="@+id/cust_add_ingred_checkbox"
-        android:layout_gravity="right"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentTop="true" />
 
 </RelativeLayout>

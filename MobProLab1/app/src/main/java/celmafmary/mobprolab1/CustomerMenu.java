@@ -38,41 +38,16 @@ public class CustomerMenu extends Fragment {
         ExpandableListView menuView = (ExpandableListView) view.findViewById(R.id.cust_menu_list);
         menuView.setAdapter(menuAdapter);
 
-//        menuView.setOnGroupClickListener(new android.widget.ExpandableListView.OnGroupClickListener() {
-//            @Override
-//            public boolean onGroupClick(ExpandableListView parent, View v, int groupPosition, long id) {
-//                Log.d("FML","clicked");
-//                parent.expandGroup(groupPosition);
-//                return true;
-//            }
-//        });
-
-//        menuView.setOnGroupClickListener(new android.widget.ExpandableListView.OnGroupClickListener() {
-//             @Override
-//             public boolean onGroupClick(ExpandableListView parent, View v, int groupPosition, long id) {
-//                 Log.d("FML","clicked");
-//                 parent.expandGroup(groupPosition);
-//                 return false;
-//             }
-//         });
-
-//        menuView.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
-//            @Override
-//            public void onGroupExpand(int groupPosition) {
-//                Log.d("onGroupClick:", "worked");
-//            }
-//        });
-//
 
         //gives CANCEL button function -- creates listener that waits for a click and moves to CustomerOrder
-        View.OnClickListener cancel_listener = new View.OnClickListener() {
+        View.OnClickListener done_listener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 ((MainActivity) getActivity()).changeFragment(new CustomerOrder());
             }
         };
-        Button cancel_btn = (Button) view.findViewById(R.id.cust_cancel_add_menu_item);
-        cancel_btn.setOnClickListener(cancel_listener); //sets up add button
+        Button done_btn = (Button) view.findViewById(R.id.cust_cancel_add_menu_item);
+        done_btn.setOnClickListener(done_listener); //sets up add button
 
         return view;
     }

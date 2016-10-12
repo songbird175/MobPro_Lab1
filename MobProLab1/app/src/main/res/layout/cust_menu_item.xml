@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:padding="8dp"
-    android:background="#000000">
+    android:background="#25383C">
 
 
     <TextView
@@ -16,7 +16,7 @@
         android:focusable="false"
         android:clickable="true"
         android:text="Dish"
-        android:textColor="#f9f93d" />
+        android:textColor="#D1D0CE" />
 
     <Button
         style="?android:attr/buttonStyleSmall"
@@ -25,9 +25,27 @@
         android:text="Ingredients"
         android:id="@+id/cust_expand_dish"
         android:focusable="false"
-        android:layout_gravity="right|bottom" />
+        android:layout_gravity="right|bottom"
+        android:layout_alignParentTop="true"
+        android:layout_alignRight="@+id/cust_menu_list_item"
+        android:layout_alignEnd="@+id/cust_menu_list_item" />
 
-</LinearLayout>
+    <!--<Button-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="Add"-->
+        <!--android:id="@+id/cust_add_dish_exp_btn"-->
+        <!--android:layout_alignParentTop="true"-->
+        <!--android:layout_toLeftOf="@+id/cust_expand_dish"-->
+        <!--android:layout_toStartOf="@+id/cust_expand_dish" />-->
 
-    <!--android:focusable="false"-->
-    <!--android:clickable="true"-->
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add"
+        android:id="@+id/cust_add_dish_checkbox"
+        android:layout_gravity="right"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
+
+</RelativeLayout>
