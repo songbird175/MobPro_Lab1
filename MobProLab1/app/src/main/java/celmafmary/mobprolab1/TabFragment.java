@@ -32,6 +32,7 @@ public class TabFragment extends Fragment {
         mTabHost = (FragmentTabHost) rootView.findViewById(R.id.tabhost);
         mTabHost.setup(getActivity(), getChildFragmentManager(), R.id.fragment_container);
 
+        //Yay tabs!
         mTabHost.addTab(mTabHost.newTabSpec("chefEdit").setIndicator("Edit Menu"),
                 ChefEditMenu.class, null);
         mTabHost.addTab(mTabHost.newTabSpec("chefMenu").setIndicator("Menu"),
@@ -44,6 +45,7 @@ public class TabFragment extends Fragment {
     }
 
     public void setCurrentTab(int tab_index) {
+        //Gives us a way to make buttons connect to a certain tab
         mTabHost = (FragmentTabHost)getActivity().findViewById(android.R.id.tabhost);
         mTabHost.setCurrentTab(tab_index);
     }

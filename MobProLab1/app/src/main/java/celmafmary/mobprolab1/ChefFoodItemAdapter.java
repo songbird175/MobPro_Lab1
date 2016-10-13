@@ -76,7 +76,7 @@ public class ChefFoodItemAdapter extends BaseExpandableListAdapter {
             public void onClick(View view){
                 ChefEditMenu chefEditMenu = new ChefEditMenu();
                 chefEditMenu.setFoodItem(selectedDish);
-                ((MainActivity) context).changeFragment(chefEditMenu);
+                ((MainActivity) context).changeFragment(chefEditMenu); //Need to modify this so it changes to Tab 0
             }
         });
 
