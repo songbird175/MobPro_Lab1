@@ -31,7 +31,8 @@ public class IngredientAdapter extends ArrayAdapter<Ingredient> {
 
     @Override
     public View getView(final int position, View convertView, ViewGroup parent){
-        final Ingredient ingredientItem = getItem(position);
+//        final Ingredient ingredientItem = getItem(position);
+        final Ingredient ingredientItem = ingredientList.get(position);
         if (convertView == null){
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.ingredient_item, parent, false);
         }
