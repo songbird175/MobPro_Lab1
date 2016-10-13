@@ -85,7 +85,7 @@ public class CustomerOrder extends Fragment {
                 ordersList.add(newOrder); //add currentOrder, in the form of newOrder, to list of orders
                 ((MainActivity) getActivity()).setOrders(ordersList); //update the list of orders in MA
                 ((MainActivity) getActivity()).setCurrentOrder(new ArrayList<FoodItem>()); //clear currentOrder, because it's been place
-                ((MainActivity) getActivity()).changeFragment(new CustTabFragment()); //move to some new fragment
+                ((MainActivity) getActivity()).changeFragment(new MainActivityFragment()); //move to some new fragment
             }
         });
         AlertDialog popup = popup_maker.create(); //make it

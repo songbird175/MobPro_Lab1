@@ -4,6 +4,7 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTabHost;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -43,7 +44,8 @@ public class CustomerMenu extends Fragment {
         View.OnClickListener done_listener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((MainActivity) getActivity()).changeFragment(new CustTabFragment());
+                FragmentTabHost host = (FragmentTabHost) getActivity().findViewById(R.id.tabhost);
+                host.setCurrentTab(1);
             }
         };
         Button done_btn = (Button) view.findViewById(R.id.cust_cancel_add_menu_item);

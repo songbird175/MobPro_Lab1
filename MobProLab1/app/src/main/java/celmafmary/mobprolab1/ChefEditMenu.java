@@ -9,6 +9,7 @@ import android.support.v4.app.FragmentTabHost;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -141,14 +142,16 @@ public class ChefEditMenu extends Fragment {
                 }
 
                 foodItemAdapter.notifyDataSetChanged();
-                ((MainActivity) getActivity()).changeFragment(new TabFragment());
+                FragmentTabHost host = (FragmentTabHost) getActivity().findViewById(R.id.tabhost);
+                host.setCurrentTab(1);
             }
         });
 
         cancelButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick (View view){
-                ((MainActivity) getActivity()).changeFragment(new TabFragment());
+                FragmentTabHost host = (FragmentTabHost) getActivity().findViewById(R.id.tabhost);
+                host.setCurrentTab(1);
             }
         });
 
