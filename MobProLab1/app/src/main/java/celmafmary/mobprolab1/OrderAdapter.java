@@ -47,6 +47,7 @@ public class OrderAdapter extends BaseExpandableListAdapter {
             this.listDataChild.put(customerName, listDishTemp); //map dish names to ingredients
         }
     }
+    //Todo: Why does it crash when dishes/ingredients are expanded and you click COMPLETE?
 
     @Override
     public View getGroupView(final int groupPosition, final boolean isExpanded, View convertView, final ViewGroup parent) {
@@ -90,7 +91,6 @@ public class OrderAdapter extends BaseExpandableListAdapter {
         return convertView;
     }
 
-    //Todo: Change child group to food items
     @Override
     public View getChildView(final int groupPosition, final int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
         final Orders selectedOrder = orders.get(groupPosition); //use position as index to find selected order from list of orders

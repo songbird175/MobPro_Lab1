@@ -25,13 +25,14 @@ public class ChefMenu extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
 
-        dbHelper = new DishDbHelper((getContext()));
+//        dbHelper = new DishDbHelper((getContext()));
 
         View view = inflater.inflate(R.layout.fragment_chef_menu, container, false);
 
         final ListView foodItemListView = (ListView) view.findViewById(R.id.chef_menu_listview);
-        final ArrayList<FoodItem> arrayOfFood = dbHelper.getAll();
-        ((MainActivity) getActivity()).setMenu(arrayOfFood); //update MA menu so Customer can see it
+//        final ArrayList<FoodItem> arrayOfFood = dbHelper.getAll();
+        ArrayList<FoodItem> arrayOfFood = ((MainActivity) getActivity()).getMenu();
+//        ((MainActivity) getActivity()).setMenu(arrayOfFood); //update MA menu so Customer can see it
         final FoodItemAdapter adapter = new FoodItemAdapter(getContext(), arrayOfFood,dbHelper);
         foodItemListView.setAdapter(adapter);
 

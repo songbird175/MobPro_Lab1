@@ -26,7 +26,6 @@ public class FoodItemAdapter extends ArrayAdapter<FoodItem>{
         this.dishList = dishItem;
         this.context = context;
         this.dbHelper = dishDbHelper;
-
     }
 
     @Override

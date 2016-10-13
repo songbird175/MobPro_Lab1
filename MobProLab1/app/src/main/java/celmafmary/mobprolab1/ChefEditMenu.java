@@ -91,7 +91,6 @@ public class ChefEditMenu extends Fragment {
                 alertDialog.setButton(-2, "Cancel", new DialogInterface.OnClickListener(){
                     @Override
                     public void onClick(DialogInterface dialogy, int which){
-
                     }
                 });
                 alertDialog.show();

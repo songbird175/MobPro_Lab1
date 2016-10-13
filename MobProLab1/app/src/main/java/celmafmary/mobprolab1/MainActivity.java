@@ -40,6 +40,10 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         Context context = this;
 
+        DishDbHelper dbHelper = new DishDbHelper(context); //create SQL database helper
+        ArrayList<FoodItem> arrayOfFood = dbHelper.getAll(); //get food item list from SQL database
+        menuList = arrayOfFood; //set the menu equal to the database food item list
+
         //just for testing
         Ingredient bird = new Ingredient("bird");
         Ingredient gravy = new Ingredient("gravy");
@@ -51,8 +55,8 @@ public class MainActivity extends AppCompatActivity {
         saladParts.add(lettuce);
         FoodItem chicken = new FoodItem("chicken", chickenParts);
         FoodItem salad = new FoodItem("salad", saladParts);
-        menuList.add(chicken);
-        menuList.add(salad);
+        addToMenu(chicken);
+        addToMenu(salad);
         Orders mealOrder = new Orders("obviously Bob",menuList);
         orders.add(mealOrder);
     }
@@ -74,6 +78,8 @@ public class MainActivity extends AppCompatActivity {
     }
     public void addToMenu(FoodItem foodItem){
         menuList.add(foodItem);
+        DishDbHelper dbHelper = new DishDbHelper(getBaseContext()); //create SQL database helper
+        dbHelper.addToMenu(foodItem);
     }
 
     public ArrayList<Orders> getOrders(){
