@@ -26,7 +26,6 @@ public class FoodItemAdapter extends ArrayAdapter<FoodItem>{
         this.dishList = dishItem;
         this.context = context;
         this.dbHelper = dishDbHelper;
-
     }
 
     @Override
@@ -36,10 +35,10 @@ public class FoodItemAdapter extends ArrayAdapter<FoodItem>{
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.chef_food_item, parent, false);
         }
 
-        final TextView individual_food_item = (TextView) convertView.findViewById(R.id.individual_food_item);
+        final TextView individual_food_item = (TextView) convertView.findViewById(R.id.chef_food_item_name);
         individual_food_item.setText(foodItem.getName());
-        Button deleteButton = (Button) convertView.findViewById(R.id.delete_food_item);
-        Button editButton = (Button) convertView.findViewById(R.id.edit_food_item);
+        Button deleteButton = (Button) convertView.findViewById(R.id.chef_delete_food_item_btn);
+        Button editButton = (Button) convertView.findViewById(R.id.chef_edit_food_item_btn);
 
         editButton.setOnClickListener(new View.OnClickListener(){
             @Override

@@ -14,6 +14,7 @@ import android.widget.CompoundButton;
 import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -47,6 +48,7 @@ public class OrderAdapter extends BaseExpandableListAdapter {
             this.listDataChild.put(customerName, listDishTemp); //map dish names to ingredients
         }
     }
+    //Todo: Why does it crash when dishes/ingredients are expanded and you click COMPLETE?
 
     @Override
     public View getGroupView(final int groupPosition, final boolean isExpanded, View convertView, final ViewGroup parent) {
@@ -90,7 +92,6 @@ public class OrderAdapter extends BaseExpandableListAdapter {
         return convertView;
     }
 
-    //Todo: Change child group to food items
     @Override
     public View getChildView(final int groupPosition, final int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
         final Orders selectedOrder = orders.get(groupPosition); //use position as index to find selected order from list of orders
@@ -109,8 +110,11 @@ public class OrderAdapter extends BaseExpandableListAdapter {
 
         //create list view for ingredients (ingredient list)
         ArrayList<Ingredient> ingredientList = selectedDish.getIngredients();
+        Log.d("INGREDS",ingredientList.toString());
         ChefOrderAdapterIngred ingredientAdapter = new ChefOrderAdapterIngred(context,ingredientList);
         ListView ingredientLV = (ListView) convertView.findViewById(R.id.chef_order_ingredient_list);
+//        RelativeLayout.LayoutParams mParam = new RelativeLayout.LayoutParams((350),(30*ingredientList.size()));
+//        ingredientLV.setLayoutParams(mParam);
         ingredientLV.setAdapter(ingredientAdapter);
 
         return convertView;
