@@ -42,7 +42,7 @@ public class CustomerOrder extends Fragment {
         View.OnClickListener add_listener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((MainActivity) getActivity()).changeFragment(new CustomerMenu()); //adding happens in CustomerMenu
+                ((MainActivity) getActivity()).changeFragment(new CustTabFragment()); //adding happens in CustomerMenu
             }
         };
         Button add_btn = (Button) view.findViewById(R.id.cust_add_dish_btn);

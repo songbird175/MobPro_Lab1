@@ -29,7 +29,6 @@ public class TabFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_tab, container, false);
 
 
-//        mTabHost = new FragmentTabHost(getActivity());
         mTabHost = (FragmentTabHost) rootView.findViewById(R.id.tabhost);
         mTabHost.setup(getActivity(), getChildFragmentManager(), R.id.fragment_container);
 
@@ -42,5 +41,10 @@ public class TabFragment extends Fragment {
 
 
         return rootView;
+    }
+
+    public void setCurrentTab(int tab_index) {
+        mTabHost = (FragmentTabHost)getActivity().findViewById(android.R.id.tabhost);
+        mTabHost.setCurrentTab(tab_index);
     }
 }

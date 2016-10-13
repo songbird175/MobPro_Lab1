@@ -82,7 +82,7 @@ public class CustOrderAdapter2 extends BaseExpandableListAdapter {
                 currentOrder.remove(selectedDish); //add selected dish
                 ((MainActivity) context).setCurrentOrder(currentOrder); //set current order to include latest dish
                 notifyDataSetChanged();
-                ((MainActivity) context).changeFragment(new CustomerOrder()); //do this because it doesn't really update otherwise
+                ((MainActivity) context).changeFragment(new CustTabFragment()); //do this because it doesn't really update otherwise
             }
         };
         Button delete_btn = (Button) convertView.findViewById(R.id.cust_del_dish_btn);
