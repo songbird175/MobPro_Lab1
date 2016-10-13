@@ -14,6 +14,7 @@ import android.widget.CompoundButton;
 import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -109,8 +110,11 @@ public class OrderAdapter extends BaseExpandableListAdapter {
 
         //create list view for ingredients (ingredient list)
         ArrayList<Ingredient> ingredientList = selectedDish.getIngredients();
+        Log.d("INGREDS",ingredientList.toString());
         ChefOrderAdapterIngred ingredientAdapter = new ChefOrderAdapterIngred(context,ingredientList);
         ListView ingredientLV = (ListView) convertView.findViewById(R.id.chef_order_ingredient_list);
+//        RelativeLayout.LayoutParams mParam = new RelativeLayout.LayoutParams((350),(30*ingredientList.size()));
+//        ingredientLV.setLayoutParams(mParam);
         ingredientLV.setAdapter(ingredientAdapter);
 
         return convertView;

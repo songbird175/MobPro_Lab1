@@ -5,16 +5,14 @@
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/individual_food_item"
+        android:id="@+id/chef_food_item_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:clickable="true"
         />
 
-
-
     <Button
-        android:id="@+id/delete_food_item"
+        android:id="@+id/chef_delete_food_item_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
@@ -23,13 +21,21 @@
         />
 
     <Button
-        android:id="@+id/edit_food_item"
+        android:id="@+id/chef_edit_food_item_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Edit"
         android:layout_alignParentTop="true"
-        android:layout_toLeftOf="@+id/delete_food_item"
-        android:layout_toStartOf="@+id/delete_food_item" />
+        android:layout_toLeftOf="@+id/chef_delete_food_item_btn"
+        android:layout_toStartOf="@+id/chef_delete_food_item_btn" />
 
+    <Button
+        android:id="@+id/chef_expand_food_item_ingred_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ingredients"
+        android:layout_alignParentTop="true"
+        android:layout_toLeftOf="@+id/chef_edit_food_item_btn"
+        android:layout_toStartOf="@+id/chef_edit_food_item_btn" />
 
 </RelativeLayout>

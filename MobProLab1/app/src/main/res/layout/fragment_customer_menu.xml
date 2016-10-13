@@ -14,7 +14,7 @@
             android:layout_width="match_parent"
             android:layout_height="30dp"
             android:textSize="20dp"
-            android:id="@+id/cust_order_page_title"
+            android:id="@+id/cust_menu_page_title"
             android:text="Click on menu items to add them" />
 
         <ExpandableListView

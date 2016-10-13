@@ -4,19 +4,35 @@
     android:layout_height="match_parent"
     tools:context="celmafmary.mobprolab1.ChefMenu">
 
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="594dp"
+        android:weightSum="1">
 
-    <ListView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/chef_menu_listview"
-        android:layout_gravity="center" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:textSize="20dp"
+            android:id="@+id/chef_menu_page_title"
+            android:text="Whatcha making today, Maf?" />
 
-    <Button
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Add Dish"
-        android:id="@+id/chef_add_dish"
-        android:layout_gravity="right|top" />
+        <ExpandableListView
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+            android:id="@+id/chef_menu_list"
+            android:focusable="false"
+            android:clickable="true" />
 
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="104dp"
+            android:layout_height="wrap_content"
+            android:text="Add Dish"
+            android:id="@+id/chef_add_dish_btn"
+            android:layout_gravity="right|bottom"
+            android:clickable="true" />
+
+    </LinearLayout>
 </FrameLayout>
+

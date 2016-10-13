@@ -13,6 +13,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ExpandableListAdapter;
+import android.widget.ExpandableListView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -41,12 +43,10 @@ public class ChefEditMenu extends Fragment {
         View view2 = inflater.inflate(R.layout.fragment_chef_menu,container, false);
 
         dbHelper = new DishDbHelper(getContext());
-        ArrayList<FoodItem> arrayOfFood = dbHelper.getAll();
-        final TextView dishName = (TextView) view.findViewById(R.id.dish_name);
+        final ArrayList<FoodItem> arrayOfFood = dbHelper.getAll();
+        final TextView dishName = (TextView) view.findViewById(R.id.chef_edit_menu_dish_name);
 
-
-
-        final ListView listView = (ListView) view.findViewById(R.id.listView);
+        final ListView listView = (ListView) view.findViewById(R.id.chef_edit_menu_LV);
         if (foodItem != null){
             dishName.setText(foodItem.getName());
             this.isNewFoodItem = false;
@@ -59,19 +59,15 @@ public class ChefEditMenu extends Fragment {
         final IngredientAdapter adapter = new IngredientAdapter(getContext(), foodItem.getIngredients());
         listView.setAdapter(adapter);
 
-        final ListView listViewDish = (ListView) view2.findViewById(R.id.chef_menu_listview);
-        final FoodItemAdapter foodItemAdapter = new FoodItemAdapter(getContext(), arrayOfFood, dbHelper);
+        final ExpandableListView listViewDish = (ExpandableListView) view2.findViewById(R.id.chef_menu_list);
+        final ChefFoodItemAdapter foodItemAdapter = new ChefFoodItemAdapter(getContext(), arrayOfFood, dbHelper);
         listViewDish.setAdapter(foodItemAdapter);
 
+        Button addButton = (Button) view.findViewById(R.id.add_item_btn);
+        Button doneButton = (Button) view.findViewById(R.id.done_chef_menu_btn);
+        Button cancelButton = (Button) view.findViewById(R.id.cancel_chef_menu_btn);
 
-        Button addButton = (Button) view.findViewById(R.id.add_item);
-        Button doneButton = (Button) view.findViewById(R.id.done_chef_menu);
-        Button cancelButton = (Button) view.findViewById(R.id.cancel_chef_menu);
-        TextView editDishName = (TextView) view.findViewById(R.id.dish_name);
-
-
-
-        editDishName.setOnClickListener(new View.OnClickListener(){
+        dishName.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
                 AlertDialog alertDialog = new AlertDialog.Builder(view.getContext()).create();
@@ -84,7 +80,7 @@ public class ChefEditMenu extends Fragment {
                     public void onClick(DialogInterface dialog, int which){
                         dishName.setText(input.getText().toString());
                         foodItem.setName(input.getText().toString());
-                        foodItemAdapter.add(foodItem);
+//                        foodItemAdapter.add(foodItem);
 
                     }
                 });
@@ -96,7 +92,6 @@ public class ChefEditMenu extends Fragment {
                 alertDialog.show();
             }
         });
-
 
         addButton.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -121,10 +116,7 @@ public class ChefEditMenu extends Fragment {
                 });
                 alertDialog.setButton(-2, "Cancel", new DialogInterface.OnClickListener() {
                     @Override
-                    public void onClick(DialogInterface dialog, int which) {
-
-                    }
-                });
+                    public void onClick(DialogInterface dialog, int which) {}});
                 alertDialog.show();
             }
         });
@@ -135,10 +127,13 @@ public class ChefEditMenu extends Fragment {
                 DishDbHelper dbHelper1 = new DishDbHelper(getContext());
                 if (isNewFoodItem) {
                     dbHelper1.addToMenu(foodItem);
+                    arrayOfFood.add(foodItem);
                 } else {
                     dbHelper1.updateArray(foodItem.getId(), foodItem);
+                    arrayOfFood.remove((int) foodItem.getId());
+                    arrayOfFood.set((int) foodItem.getId() - 1, foodItem);
                 }
-
+                ((MainActivity) getActivity()).setMenu(arrayOfFood);
                 foodItemAdapter.notifyDataSetChanged();
                 ((MainActivity) getActivity()).changeFragment(new ChefMenu());
             }
@@ -150,7 +145,6 @@ public class ChefEditMenu extends Fragment {
                 ((MainActivity) getActivity()).changeFragment(new ChefMenu());
             }
         });
-
 
         return view;
     }

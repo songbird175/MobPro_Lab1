@@ -2,6 +2,7 @@ package celmafmary.mobprolab1;
 
 import android.content.Context;
 import android.graphics.Typeface;
+import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,16 +22,15 @@ public class ChefFoodItemAdapter extends BaseExpandableListAdapter {
 
     private ArrayList<FoodItem> dishes; //the menu
     private Context context;
+    private DishDbHelper dbHelper;
     private List<String> listDataHeader = new ArrayList<>(); //the dish names
     private HashMap<String, List<String>> listDataChild = new HashMap<>(); //the dish ingredients
-    private List<String> checkedDishesName = new ArrayList<>(); //keeps track of the names of checked items
-    private HashMap<String, ArrayList<Ingredient>> checkedDishes = new HashMap<>(); //ties checked names to ingredients
-    private HashMap<String, Integer> orderIndices = new HashMap<>(); //ties checked names to their indices in currentOrder
 
-    public ChefFoodItemAdapter(Context context, ArrayList<FoodItem> dishes){
+    public ChefFoodItemAdapter(Context context, ArrayList<FoodItem> dishes, DishDbHelper dishDbHelper){
         super();
         this.dishes = dishes;
         this.context = context;
+        this.dbHelper = dishDbHelper;
         for (int i = 0; i < dishes.size(); i++){ //loops through dishes
             String dishName = dishes.get(i).getName(); //extract dish name
             this.listDataHeader.add(dishName); //add it to headers list
@@ -46,16 +46,16 @@ public class ChefFoodItemAdapter extends BaseExpandableListAdapter {
 
     @Override
     public View getGroupView(final int groupPosition, final boolean isExpanded, View convertView, final ViewGroup parent) {
-        String foodItemName = (String) getGroup(groupPosition); //get dish name based on location (group name) to put in TextView
+        final FoodItem selectedDish = dishes.get(groupPosition);
         if (convertView == null) { //if no current view, create one
             LayoutInflater Inflater = (LayoutInflater) this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = Inflater.inflate(R.layout.cust_menu_item, null);
+            convertView = Inflater.inflate(R.layout.chef_food_item, null);
         }
 
         //set header (foodItem name)
-        TextView tvName = (TextView) convertView.findViewById(R.id.cust_menu_list_item);
+        TextView tvName = (TextView) convertView.findViewById(R.id.chef_food_item_name);
         tvName.setTypeface(null, Typeface.BOLD);
-        tvName.setText(foodItemName);
+        tvName.setText(selectedDish.getName());
 
         //gives INGREDIENTS button function -- creates listener that waits for a click and expands list
         View.OnClickListener expand_listener = new View.OnClickListener() {
@@ -65,32 +65,35 @@ public class ChefFoodItemAdapter extends BaseExpandableListAdapter {
                 else ((ExpandableListView) parent).expandGroup(groupPosition, true); //expand LV if collapsed
             }
         };
-        Button expand_btn = (Button) convertView.findViewById(R.id.cust_expand_dish);
-        expand_btn.setOnClickListener(expand_listener); //sets up add button
 
-        //gives ADD checkbox function -- creates listener that waits for a click and either removes or adds the dish to currentOrder plus updates a bunch of lists and hash maps
-        CheckBox dish_checked = (CheckBox) convertView.findViewById(R.id.cust_add_dish_checkbox);
-        dish_checked.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        Button expand_btn = (Button) convertView.findViewById(R.id.chef_expand_food_item_ingred_btn);
+        expand_btn.setOnClickListener(expand_listener); //sets up expand button
+
+        //gives EDIT button function -- creates listener that waits for a click and moves to ChefEditMenu with selectedDish as param
+        Button editButton = (Button) convertView.findViewById(R.id.chef_edit_food_item_btn);
+        editButton.setOnClickListener(new View.OnClickListener(){
             @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                FoodItem selectedDish = dishes.get(groupPosition); //use position as index to find selected foodItem from list dishes
-                ArrayList<FoodItem> currentOrder = ((MainActivity) context).getCurrentOrder(); //get current order and store as list currentDishes
-                if (isChecked == true){ //if it's checked, continue
-                    currentOrder.add(selectedDish); //add selected dish to current order
-                    checkedDishesName.add(selectedDish.getName()); //add dish name to list of checked items (so we can keep track of what's checked and what's not)
-                    checkedDishes.put(selectedDish.getName(),selectedDish.getIngredients()); //add dish name and ingredients to map, keep track of checked dishes' ingredients
-                    orderIndices.put(selectedDish.getName(),currentOrder.indexOf(selectedDish)); //add dish name and index of dish in currentOrder to keep track of checked dishes' indices (so we can make changes)
-                }
-                else if (isChecked == false) {
-                    currentOrder.remove(selectedDish); //opposite of all the stuff above
-                    checkedDishesName.remove(selectedDish.getName()); //ditto
-                    checkedDishes.remove(selectedDish.getName()); //ditto
-                    orderIndices.remove(selectedDish.getName()); //ditto
-                }
-                ((MainActivity) context).setCurrentOrder(currentOrder); //set current order to include latest dish
-                notifyDataSetChanged();
+            public void onClick(View view){
+                ChefEditMenu chefEditMenu = new ChefEditMenu();
+                chefEditMenu.setFoodItem(selectedDish);
+                ((MainActivity) context).changeFragment(chefEditMenu);
             }
         });
+
+        //gives DELETE button function -- creates listener that waits for a click and deletes selectedDish from list
+        Button deleteButton = (Button) convertView.findViewById(R.id.chef_delete_food_item_btn);
+        deleteButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                dishes.remove(groupPosition);
+//                dbHelper.deleteRow(selectedDish);
+                ((MainActivity) context).setMenu(dishes); //update menu for customer side
+                notifyDataSetChanged();
+                ((MainActivity) context).changeFragment(new ChefMenu()); //do this because it doesn't really update otherwise
+
+            }
+        });
+
         return convertView;
     }
 
@@ -99,49 +102,14 @@ public class ChefFoodItemAdapter extends BaseExpandableListAdapter {
         final String ingredientName = (String) getChild(groupPosition, childPosition);
         if (convertView == null) {
             LayoutInflater Inflater = (LayoutInflater) this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = Inflater.inflate(R.layout.cust_menu_item_ingred, null);
+            convertView = Inflater.inflate(R.layout.chef_order_ingredient, null);
         }
 
         //set header (ingredient name)
-        TextView tvName = (TextView) convertView.findViewById(R.id.cust_item_ingred);
+        TextView tvName = (TextView) convertView.findViewById(R.id.chef_order_ingredient);
         tvName.setTypeface(null, Typeface.BOLD);
         tvName.setText(ingredientName);
 
-        //create checkbox and check to see if the ingredient's dish is checked (if it's not, the ingredient can't be checked)
-        final CheckBox ingred_checked = (CheckBox) convertView.findViewById(R.id.cust_add_ingred_checkbox);
-        final FoodItem selectedDish = dishes.get(groupPosition); //use position as index to find selected foodItem from list dishes
-        if (checkedDishesName.contains(selectedDish.getName())){}
-        else {ingred_checked.setChecked(false);} //unchecks checkbox if dish isn't also selected (so we don't add ingredients below without a dish)
-
-        //gives EXCLUDE checkbox function -- creates listener that waits for a click and either removes the ingredient, adds it back, or does nothing
-        ingred_checked.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (checkedDishesName.contains(selectedDish.getName())){ //only make changes if the dish is checked
-                    ArrayList<FoodItem> currentOrder = ((MainActivity) context).getCurrentOrder(); //get current order and store as list currentDishes
-                    ArrayList<Ingredient> checkedIngreds = checkedDishes.get(selectedDish.getName()); //get checked dish's ingredients
-                    Ingredient selectedIng = dishes.get(groupPosition).getIngredients().get(childPosition); //get selected ingredient
-
-                    if (isChecked == false){
-                        if (checkedIngreds.contains(selectedIng)){} //if the ingredient is already part of the dish, do nothing (otherwise would have 2 because it starts with 1)
-                        else {
-                            checkedIngreds.add(selectedIng); //otherwise, add it
-                        }}
-                    else if (isChecked == true) {
-                        checkedIngreds.remove(selectedIng); //remove the ingredient
-                    }
-                    checkedDishes.put(selectedDish.getName(),checkedIngreds); //put changed ingredient list back in hash map of dish names and their ingredients
-                    selectedDish.setIngredients(checkedIngreds); //set updated ingredients to untouched dish
-                    int dishIndex = orderIndices.get(selectedDish.getName()); //get index of dish from hash map of dish names and their indices
-                    currentOrder.set(dishIndex, selectedDish); //use index to update dish in currentOrder list
-                    ((MainActivity) context).setCurrentOrder(currentOrder); //reset current order to include latest dish
-                    notifyDataSetChanged();
-                }
-                else {
-                    ingred_checked.setChecked(false); //if the dish isn't selected, uncheck the ingredient
-                }
-            }
-        });
         return convertView;
     }
 
