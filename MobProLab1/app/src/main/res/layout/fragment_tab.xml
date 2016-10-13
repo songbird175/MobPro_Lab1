@@ -4,6 +4,7 @@
     android:layout_height="match_parent"
     tools:context="celmafmary.mobprolab1.TabFragment">
 
+    <!--xml suggestions taken from http://stackoverflow.com/questions/28901977/fragmenttabhost-no-tab-known-for-tag-null-->
     <android.support.v4.app.FragmentTabHost
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/tabhost"

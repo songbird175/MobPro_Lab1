@@ -3,6 +3,7 @@ package celmafmary.mobprolab1;
 import android.content.Context;
 import android.graphics.Typeface;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTabHost;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -46,6 +47,7 @@ public class ChefFoodItemAdapter extends BaseExpandableListAdapter {
 
     @Override
     public View getGroupView(final int groupPosition, final boolean isExpanded, View convertView, final ViewGroup parent) {
+        final Context context = parent.getContext();
         final FoodItem selectedDish = dishes.get(groupPosition);
         if (convertView == null) { //if no current view, create one
             LayoutInflater Inflater = (LayoutInflater) this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -72,10 +74,16 @@ public class ChefFoodItemAdapter extends BaseExpandableListAdapter {
         //gives EDIT button function -- creates listener that waits for a click and moves to ChefEditMenu with selectedDish as param
         Button editButton = (Button) convertView.findViewById(R.id.chef_edit_food_item_btn);
         editButton.setOnClickListener(new View.OnClickListener(){
+            public Object getParent() {
+                return parent;
+            }
+
             @Override
             public void onClick(View view){
                 ChefEditMenu chefEditMenu = new ChefEditMenu();
                 chefEditMenu.setFoodItem(selectedDish);
+//                FragmentTabHost host = (FragmentTabHost) getParent();
+//                host.setCurrentTab(1);
                 ((MainActivity) context).changeFragment(chefEditMenu); //Need to modify this so it changes to Tab 0
             }
         });

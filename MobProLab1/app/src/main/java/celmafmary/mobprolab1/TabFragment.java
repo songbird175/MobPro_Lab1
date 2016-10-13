@@ -22,6 +22,7 @@ public class TabFragment extends Fragment {
 
     }
 
+    //Code taken largely from the Android documentation, specifically at https://developer.android.com/reference/android/support/v4/app/FragmentTabHost.html
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
