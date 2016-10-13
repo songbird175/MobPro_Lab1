@@ -31,6 +31,7 @@ public class ChefMenu extends Fragment {
 
         final ListView foodItemListView = (ListView) view.findViewById(R.id.chef_menu_listview);
         final ArrayList<FoodItem> arrayOfFood = dbHelper.getAll();
+        ((MainActivity) getActivity()).setMenu(arrayOfFood); //update MA menu so Customer can see it
         final FoodItemAdapter adapter = new FoodItemAdapter(getContext(), arrayOfFood,dbHelper);
         foodItemListView.setAdapter(adapter);
 

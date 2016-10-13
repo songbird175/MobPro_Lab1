@@ -4,4 +4,27 @@
     android:layout_height="match_parent"
     tools:context="celmafmary.mobprolab1.ChefOrder">
 
+    <TextView
+        android:id="@+id/chef_title_order"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="?android:attr/expandableListPreferredItemPaddingLeft"
+        android:textSize="20dp"
+        android:focusable="false"
+        android:clickable="true"
+        android:text="Orders list"
+        android:textColor="#000000" />
+
+    <ExpandableListView
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:id="@+id/cust_menu_list"
+        android:focusable="false"
+        android:clickable="true"
+        android:layout_below="@+id/dish"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_gravity="center" />
+
+
 </FrameLayout>
