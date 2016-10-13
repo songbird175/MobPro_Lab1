@@ -20,35 +20,56 @@ import java.util.ArrayList;
 
 
 public class ChefEditMenu extends Fragment {
+    DishDbHelper dbHelper;
+    FoodItem foodItem;
+    FoodItemAdapter foodItemAdapter;
+    Boolean isNewFoodItem;
 
-    private FragmentTabHost mTabHost;
+    public ChefEditMenu(){
+
+    }
 
 
-    public ChefEditMenu() {
-        // Required empty public constructor
+    public void setFoodItem(FoodItem foodItem) {
+        this.foodItem = foodItem;
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
+
         View view = inflater.inflate(R.layout.fragment_chef_edit_menu, container, false);
         View view2 = inflater.inflate(R.layout.fragment_chef_menu,container, false);
 
+        dbHelper = new DishDbHelper(getContext());
+        ArrayList<FoodItem> arrayOfFood = dbHelper.getAll();
+        final TextView dishName = (TextView) view.findViewById(R.id.dish_name);
+
+
+
         final ListView listView = (ListView) view.findViewById(R.id.listView);
-        final IngredientAdapter adapter = new IngredientAdapter(getContext(), new ArrayList<Ingredient>());
+        if (foodItem != null){
+            dishName.setText(foodItem.getName());
+            this.isNewFoodItem = false;
+        } else {
+            Log.d("ChefEditMent", "FoodItem is Null!!!!");
+            foodItem = new FoodItem("NoName", new ArrayList<Ingredient>());
+            this.isNewFoodItem = true;
+        }
+
+        final IngredientAdapter adapter = new IngredientAdapter(getContext(), foodItem.getIngredients());
         listView.setAdapter(adapter);
 
         final ListView listViewDish = (ListView) view2.findViewById(R.id.chef_menu_listview);
-        final FoodItemAdapter foodItemAdapter = new FoodItemAdapter(getContext(), new ArrayList<FoodItem>());
+        final FoodItemAdapter foodItemAdapter = new FoodItemAdapter(getContext(), arrayOfFood, dbHelper);
         listViewDish.setAdapter(foodItemAdapter);
-
-        final TextView dishName = (TextView) view.findViewById(R.id.dish_name);
-        final FoodItem foodItem = new FoodItem("bob", new ArrayList<Ingredient>());
 
 
         Button addButton = (Button) view.findViewById(R.id.add_item);
         Button doneButton = (Button) view.findViewById(R.id.done_chef_menu);
         Button cancelButton = (Button) view.findViewById(R.id.cancel_chef_menu);
         TextView editDishName = (TextView) view.findViewById(R.id.dish_name);
+
+
 
         editDishName.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -91,7 +112,11 @@ public class ChefEditMenu extends Fragment {
                     @Override
                     public void onClick(DialogInterface dialog, int which){
                         Ingredient newIngredient = new Ingredient(input.getText().toString());
-                        adapter.add(newIngredient);
+                        foodItem.addIngredients(newIngredient);
+                        Log.d("ChefEdit", "add to food Item");
+                        //Todo: Use fix add ingredient function
+                        adapter.notifyDataSetChanged();
+                        //adapter.add(newIngredient);
                         //Todo: I don't think I am actually saving the ingredients
                     }
                 });
@@ -108,7 +133,14 @@ public class ChefEditMenu extends Fragment {
         doneButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
-                ((MainActivity) getActivity()).addToMenu(foodItem);
+                DishDbHelper dbHelper1 = new DishDbHelper(getContext());
+                if (isNewFoodItem) {
+                    dbHelper1.addToMenu(foodItem);
+                } else {
+                    dbHelper1.updateArray(foodItem.getId(), foodItem);
+                }
+
+                foodItemAdapter.notifyDataSetChanged();
                 ((MainActivity) getActivity()).changeFragment(new ChefMenu());
             }
         });

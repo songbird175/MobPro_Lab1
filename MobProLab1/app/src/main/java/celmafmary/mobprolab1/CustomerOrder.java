@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ExpandableListView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -28,14 +29,13 @@ public class CustomerOrder extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        Log.d("ORDER","on the ORDER page");
 
         View view = inflater.inflate(R.layout.fragment_customer_order, container, false);
         final Context context = getContext();
 
         final ArrayList<FoodItem> currentOrder = ((MainActivity) getActivity()).getCurrentOrder();
-        CustOrderAdapter orderAdapter = new CustOrderAdapter(context, currentOrder);
-        ListView ordersView = (ListView) view.findViewById(R.id.cust_cur_dish_list);
+        CustOrderAdapter2 orderAdapter = new CustOrderAdapter2(context, currentOrder);
+        ExpandableListView ordersView = (ExpandableListView) view.findViewById(R.id.cust_order_list);
         ordersView.setAdapter(orderAdapter);
 
         //gives ADD button function -- creates listener that waits for a click and adds a new list item to cur_dish_list

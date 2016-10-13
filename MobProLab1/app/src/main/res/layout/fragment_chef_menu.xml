@@ -4,12 +4,19 @@
     android:layout_height="match_parent"
     tools:context="celmafmary.mobprolab1.ChefMenu">
 
-    <!-- TODO: Update blank fragment layout -->
 
     <ListView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/chef_menu_listview"
         android:layout_gravity="center" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add Dish"
+        android:id="@+id/chef_add_dish"
+        android:layout_gravity="right|top" />
 
 </FrameLayout>

@@ -15,11 +15,11 @@
         android:layout_alignParentEnd="true" />
 
     <Button
-        android:layout_width="100dp"
+        android:layout_width="105dp"
         android:layout_height="50dp"
         android:id="@+id/add_item"
         android:layout_gravity="right"
-        android:text="Add Item"
+        android:text="Add Ingredient"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
@@ -38,7 +38,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="DONE"
+        android:text="ADD DISH TO MENU"
         android:id="@+id/done_chef_menu"
         android:layout_below="@+id/listView"
         android:layout_alignRight="@+id/add_item"

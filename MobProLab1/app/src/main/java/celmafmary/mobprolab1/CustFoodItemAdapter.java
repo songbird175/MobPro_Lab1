@@ -22,26 +22,26 @@ public class CustFoodItemAdapter extends ArrayAdapter<FoodItem> {
     }
 
     public View getView(final int position, View convertView, ViewGroup parent) {
-        FoodItem foodItem = (FoodItem) getItem(position);
+        FoodItem foodItem = getItem(position);
         if (convertView == null) {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.cust_menu_item, parent, false);
         }
 
         TextView tvName = (TextView) convertView.findViewById(R.id.cust_menu_list_item);
-        tvName.setText(foodItem.getName());
+        tvName.setText(foodItem.getName()); //make each text view show name of foodItem
 
         View.OnClickListener add_listener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FoodItem selectedDish = dishes.get(position); //gets foodItem with that index
-                ArrayList<FoodItem> currentDishes = ((MainActivity) context).getCurrentOrder();
-                currentDishes.add(selectedDish);
-                ((MainActivity) context).setCurrentOrder(currentDishes);
-                ((MainActivity) context).changeFragment(new CustomerOrder());
+                FoodItem selectedDish = dishes.get(position); //use position as index to find selected foodItem from list dishes
+                ArrayList<FoodItem> currentOrder = ((MainActivity) context).getCurrentOrder(); //get current order and store as list currentDishes
+                currentOrder.add(selectedDish); //add selected dish
+                ((MainActivity) context).setCurrentOrder(currentOrder); //set current order to include latest dish
+                ((MainActivity) context).changeFragment(new CustomerOrder()); //go back to order page
                 notifyDataSetChanged();
             }
         };
-        tvName.setOnClickListener(add_listener);
+        tvName.setOnClickListener(add_listener); //put listener on textviews
         return convertView;
     }
 }
