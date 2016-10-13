@@ -3,6 +3,7 @@ package celmafmary.mobprolab1;
 import android.content.Context;
 import android.graphics.Typeface;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTabHost;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -76,6 +77,8 @@ public class ChefFoodItemAdapter extends BaseExpandableListAdapter {
             public void onClick(View view){
                 ChefEditMenu chefEditMenu = new ChefEditMenu();
                 chefEditMenu.setFoodItem(selectedDish);
+//                FragmentTabHost host = (FragmentTabHost) getActivity().findViewById(R.id.tabhost);
+//                host.setCurrentTab(1);
                 ((MainActivity) context).changeFragment(chefEditMenu); //Need to modify this so it changes to Tab 0
             }
         });
