@@ -1,17 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="8dp"
+    android:background="#25383C">
 
-    <TextView xmlns:android="http://schemas.android.com/apk/res/android"
+
+    <TextView
         android:id="@+id/cust_menu_list_item"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:padding="10dip"
-        android:text="BOBBBB"
-        android:textSize="16dip"
-        android:textStyle="bold" >
-    </TextView>
+        android:layout_height="wrap_content"
+        android:paddingLeft="?android:attr/expandableListPreferredItemPaddingLeft"
+        android:textSize="17dp"
+        android:focusable="false"
+        android:clickable="true"
+        android:text="Dish"
+        android:textColor="#D1D0CE" />
 
-</LinearLayout>
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:text="Ingredients"
+        android:id="@+id/cust_expand_dish"
+        android:focusable="false"
+        android:layout_gravity="right|bottom"
+        android:layout_alignParentTop="true"
+        android:layout_alignRight="@+id/cust_menu_list_item"
+        android:layout_alignEnd="@+id/cust_menu_list_item" />
+
+    <!--<Button-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="Add"-->
+        <!--android:id="@+id/cust_add_dish_exp_btn"-->
+        <!--android:layout_alignParentTop="true"-->
+        <!--android:layout_toLeftOf="@+id/cust_expand_dish"-->
+        <!--android:layout_toStartOf="@+id/cust_expand_dish" />-->
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add"
+        android:id="@+id/cust_add_dish_checkbox"
+        android:layout_gravity="right"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
+
+</RelativeLayout>

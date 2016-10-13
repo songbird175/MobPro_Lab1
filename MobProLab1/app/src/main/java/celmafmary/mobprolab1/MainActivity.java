@@ -18,12 +18,11 @@ import android.widget.ListView;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
-    
-
 
     ArrayList<FoodItem> menuList = new ArrayList<>();
     ArrayList<Orders> orders = new ArrayList<>();
     ArrayList<FoodItem> cur_order = new ArrayList<>();
+
 
 
     @Override
@@ -41,21 +40,21 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         Context context = this;
 
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
+        //just for testing
+        Ingredient bird = new Ingredient("bird");
+        Ingredient gravy = new Ingredient("gravy");
+        Ingredient lettuce = new Ingredient("lettuce");
+        ArrayList<Ingredient> chickenParts = new ArrayList<>();
+        ArrayList<Ingredient> saladParts = new ArrayList<>();
+        chickenParts.add(bird);
+        chickenParts.add(gravy);
+        saladParts.add(lettuce);
+        FoodItem chicken = new FoodItem("chicken", chickenParts);
+        FoodItem salad = new FoodItem("salad", saladParts);
+        menuList.add(chicken);
+        menuList.add(salad);
+        Orders mealOrder = new Orders("obviously Bob",menuList);
+        orders.add(mealOrder);
     }
 
     //switches fragments, new fragment is input
@@ -75,7 +74,6 @@ public class MainActivity extends AppCompatActivity {
     }
     public void addToMenu(FoodItem foodItem){
         menuList.add(foodItem);
-
     }
 
     public ArrayList<Orders> getOrders(){
