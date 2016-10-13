@@ -141,14 +141,14 @@ public class ChefEditMenu extends Fragment {
                 }
 
                 foodItemAdapter.notifyDataSetChanged();
-                ((MainActivity) getActivity()).changeFragment(new ChefMenu());
+                ((MainActivity) getActivity()).changeFragment(new TabFragment());
             }
         });
 
         cancelButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick (View view){
-                ((MainActivity) getActivity()).changeFragment(new ChefMenu());
+                ((MainActivity) getActivity()).changeFragment(new TabFragment());
             }
         });
 

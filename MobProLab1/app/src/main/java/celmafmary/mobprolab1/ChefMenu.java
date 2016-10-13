@@ -40,7 +40,7 @@ public class ChefMenu extends Fragment {
         addDish.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
-                ((MainActivity) getActivity()).changeFragment(new ChefEditMenu());
+                ((MainActivity) getActivity()).changeFragment(new TabFragment());
             }
         });
 

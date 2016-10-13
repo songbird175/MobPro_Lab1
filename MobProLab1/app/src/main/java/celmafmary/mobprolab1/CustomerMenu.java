@@ -43,7 +43,7 @@ public class CustomerMenu extends Fragment {
         View.OnClickListener done_listener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((MainActivity) getActivity()).changeFragment(new CustomerOrder());
+                ((MainActivity) getActivity()).changeFragment(new CustTabFragment());
             }
         };
         Button done_btn = (Button) view.findViewById(R.id.cust_cancel_add_menu_item);

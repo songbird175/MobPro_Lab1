@@ -42,7 +42,7 @@ public class CustomerOrder extends Fragment {
         View.OnClickListener add_listener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((MainActivity) getActivity()).changeFragment(new CustomerMenu()); //adding happens in CustomerMenu
+                ((MainActivity) getActivity()).changeFragment(new CustTabFragment()); //adding happens in CustomerMenu
             }
         };
         Button add_btn = (Button) view.findViewById(R.id.cust_add_dish_btn);
@@ -85,7 +85,7 @@ public class CustomerOrder extends Fragment {
                 ordersList.add(newOrder); //add currentOrder, in the form of newOrder, to list of orders
                 ((MainActivity) getActivity()).setOrders(ordersList); //update the list of orders in MA
                 ((MainActivity) getActivity()).setCurrentOrder(new ArrayList<FoodItem>()); //clear currentOrder, because it's been place
-                ((MainActivity) getActivity()).changeFragment(new MainActivityFragment()); //move to some new fragment
+                ((MainActivity) getActivity()).changeFragment(new CustTabFragment()); //move to some new fragment
             }
         });
         AlertDialog popup = popup_maker.create(); //make it
