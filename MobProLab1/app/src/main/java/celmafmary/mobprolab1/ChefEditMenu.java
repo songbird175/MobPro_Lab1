@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTabHost;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -150,7 +151,6 @@ public class ChefEditMenu extends Fragment {
                 ((MainActivity) getActivity()).changeFragment(new ChefMenu());
             }
         });
-
 
 
         return view;

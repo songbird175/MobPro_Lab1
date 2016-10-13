@@ -25,7 +25,7 @@ public class MainActivityFragment extends Fragment {
         View.OnClickListener chef_listener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((MainActivity) getActivity()).changeFragment(new ChefEditMenu()); //calls MainActivity method to switch fragments
+                ((MainActivity) getActivity()).changeFragment(new TabFragment()); //calls MainActivity method to switch fragments
             }
         };
         Button chef_btn = (Button) view.findViewById(R.id.Chef_btn);
@@ -36,7 +36,7 @@ public class MainActivityFragment extends Fragment {
             @Override
             public void onClick(View v) {
 //                ((MainActivity) getActivity()).changeFragment(cust_fragment, cust_fragment); //calls MainActivity method to switch
-                ((MainActivity) getActivity()).changeFragment(new CustomerOrder()); //calls MainActivity method to switch fragments
+                ((MainActivity) getActivity()).changeFragment(new CustTabFragment()); //calls MainActivity method to switch fragments
             }
         };
         Button cust_btn = (Button) view.findViewById(R.id.Customer_btn);
