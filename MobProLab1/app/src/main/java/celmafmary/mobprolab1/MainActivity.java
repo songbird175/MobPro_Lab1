@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         //transaction.add(R.id.fragment_container, new MainActivityFragment());
-        transaction.add(R.id.fragment_container, new ChefEditMenu());
+        transaction.add(R.id.fragment_container, new MainActivityFragment());
         transaction.commit();
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);

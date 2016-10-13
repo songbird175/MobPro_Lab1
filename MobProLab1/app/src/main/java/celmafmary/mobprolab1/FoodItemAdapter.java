@@ -1,6 +1,8 @@
 package celmafmary.mobprolab1;
 
+import android.app.Fragment;
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,11 +19,13 @@ public class FoodItemAdapter extends ArrayAdapter<FoodItem>{
 
     private ArrayList<FoodItem> dishList;
     private Context context;
+    private DishDbHelper dbHelper;
 
-    public FoodItemAdapter(Context context, ArrayList<FoodItem> dishItem){
+    public FoodItemAdapter(Context context, ArrayList<FoodItem> dishItem, DishDbHelper dishDbHelper){
         super(context, 0, dishItem);
         this.dishList = dishItem;
         this.context = context;
+        this.dbHelper = dishDbHelper;
 
     }
 
@@ -40,8 +44,11 @@ public class FoodItemAdapter extends ArrayAdapter<FoodItem>{
         editButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
-                //Todo switch to ChefEditMenu Fragment
-                //((MainActivity) getActivity()).changeFragment(new ChefEditMenu());
+
+                ChefEditMenu chefEditMenu = new ChefEditMenu();
+                chefEditMenu.setFoodItem(foodItem);
+                ((MainActivity) context).changeFragment(chefEditMenu);
+
             }
         });
 
@@ -49,6 +56,7 @@ public class FoodItemAdapter extends ArrayAdapter<FoodItem>{
             @Override
             public void onClick(View view){
                 dishList.remove(position);
+                dbHelper.deleteRow(foodItem);
                 notifyDataSetChanged();
             }
         });

@@ -1,5 +1,7 @@
 package celmafmary.mobprolab1;
 
+import android.util.Log;
+
 import java.util.ArrayList;
 
 /**
@@ -8,6 +10,7 @@ import java.util.ArrayList;
 public class FoodItem {
     private String name;
     private ArrayList<Ingredient> ingredients;
+    private long id;
 
     public FoodItem(String name, ArrayList<Ingredient> ingredients){
         this.name = name;
@@ -28,5 +31,17 @@ public class FoodItem {
 
     public void setIngredients(ArrayList<Ingredient> ingredients) {
         this.ingredients = ingredients;
+    }
+
+    public void addIngredients(Ingredient ingredient) {
+        this.ingredients.add(ingredient);
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 }
