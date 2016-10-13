@@ -46,7 +46,7 @@ public class FoodItemAdapter extends ArrayAdapter<FoodItem>{
 
                 ChefEditMenu chefEditMenu = new ChefEditMenu();
                 chefEditMenu.setFoodItem(foodItem);
-                ((MainActivity) context).changeFragment(chefEditMenu);
+                ((MainActivity) context).changeFragment(new TabFragment());
 
             }
         });
