@@ -1,27 +1,30 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="celmafmary.mobprolab1.ChefOrder">
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="8dp">
 
-    <!--<android.support.v4.app.FragmentTabHost-->
-        <!--xmlns:android="http://schemas.android.com/apk/res/android"-->
-        <!--android:id="@android:id/tabhost"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent">-->
+    <TextView
+        android:id="@+id/chef_title_order"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="?android:attr/expandableListPreferredItemPaddingLeft"
+        android:textSize="20dp"
+        android:focusable="false"
+        android:clickable="true"
+        android:text="Orders list"
+        android:textColor="#000000" />
 
-        <!--<LinearLayout-->
-            <!--android:orientation="vertical"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="match_parent">-->
+    <ExpandableListView
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:id="@+id/cust_menu_list"
+        android:focusable="false"
+        android:clickable="true"
+        android:layout_below="@+id/dish"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
-            <!--<FrameLayout-->
-                <!--android:id="@+id/realtabcontent"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="0dp"-->
-                <!--android:layout_weight="1"/>-->
 
-        <!--</LinearLayout>-->
-    <!--</android.support.v4.app.FragmentTabHost>-->
-
-</FrameLayout>
+</RelativeLayout>

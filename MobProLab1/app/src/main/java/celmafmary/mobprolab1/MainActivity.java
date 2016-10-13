@@ -23,8 +23,6 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<Orders> orders = new ArrayList<>();
     ArrayList<FoodItem> cur_order = new ArrayList<>();
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,7 +30,6 @@ public class MainActivity extends AppCompatActivity {
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
-        //transaction.add(R.id.fragment_container, new MainActivityFragment());
         transaction.add(R.id.fragment_container, new MainActivityFragment());
         transaction.commit();
 
