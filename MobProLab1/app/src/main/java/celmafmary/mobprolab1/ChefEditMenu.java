@@ -136,6 +136,7 @@ public class ChefEditMenu extends Fragment {
                 }
                 ((MainActivity) getActivity()).setMenu(arrayOfFood);
                 foodItemAdapter.notifyDataSetChanged();
+                //Switches view to the Menu tab
                 FragmentTabHost host = (FragmentTabHost) getActivity().findViewById(R.id.tabhost);
                 host.setCurrentTab(1);
             }

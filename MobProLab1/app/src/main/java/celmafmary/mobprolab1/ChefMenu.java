@@ -38,6 +38,7 @@ public class ChefMenu extends Fragment {
         addDish.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
+                //Switches view to the Edit Menu tab
                 FragmentTabHost host = (FragmentTabHost) getActivity().findViewById(R.id.tabhost);
                 host.setCurrentTab(0);
             }
