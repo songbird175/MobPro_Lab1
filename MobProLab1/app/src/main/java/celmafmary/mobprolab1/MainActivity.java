@@ -30,6 +30,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+//        TabFragment fragmentTab = new TabFragment();
+//        getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, fragmentTab).commit();
+
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         //transaction.add(R.id.fragment_container, new MainActivityFragment());

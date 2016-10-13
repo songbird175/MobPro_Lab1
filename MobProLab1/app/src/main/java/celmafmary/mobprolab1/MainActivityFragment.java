@@ -25,7 +25,7 @@ public class MainActivityFragment extends Fragment {
         View.OnClickListener chef_listener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((MainActivity) getActivity()).changeFragment(new ChefEditMenu()); //calls MainActivity method to switch fragments
+                ((MainActivity) getActivity()).changeFragment(new TabFragment()); //calls MainActivity method to switch fragments
             }
         };
         Button chef_btn = (Button) view.findViewById(R.id.Chef_btn);
