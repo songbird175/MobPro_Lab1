@@ -4,7 +4,6 @@
     android:layout_height="match_parent"
     tools:context="celmafmary.mobprolab1.CustomerMenu">
 
-
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
@@ -17,12 +16,6 @@
             android:textSize="20dp"
             android:id="@+id/cust_order_page_title"
             android:text="Click on menu items to add them" />
-
-        <!--<ListView-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="390dp"-->
-            <!--android:id="@+id/cust_menu_list"-->
-            <!--android:layout_weight="0.31" />-->
 
         <ExpandableListView
             android:layout_width="match_parent"
@@ -39,7 +32,6 @@
             android:id="@+id/cust_cancel_add_menu_item"
             android:layout_gravity="right|bottom"
             android:clickable="true" />
-
 
     </LinearLayout>
 </FrameLayout>
