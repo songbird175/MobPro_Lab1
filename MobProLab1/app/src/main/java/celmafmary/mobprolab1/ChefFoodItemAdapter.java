@@ -22,7 +22,6 @@ public class ChefFoodItemAdapter extends BaseExpandableListAdapter {
 
     private ArrayList<FoodItem> dishes; //the menu
     private Context context;
-    private DishDbHelper dbHelper;
     private List<String> listDataHeader = new ArrayList<>(); //the dish names
     private HashMap<String, List<String>> listDataChild = new HashMap<>(); //the dish ingredients
 
@@ -30,7 +29,6 @@ public class ChefFoodItemAdapter extends BaseExpandableListAdapter {
         super();
         this.dishes = dishes;
         this.context = context;
-        this.dbHelper = dishDbHelper;
         for (int i = 0; i < dishes.size(); i++){ //loops through dishes
             String dishName = dishes.get(i).getName(); //extract dish name
             this.listDataHeader.add(dishName); //add it to headers list
@@ -86,11 +84,9 @@ public class ChefFoodItemAdapter extends BaseExpandableListAdapter {
             @Override
             public void onClick(View view){
                 dishes.remove(groupPosition);
-//                dbHelper.deleteRow(selectedDish);
                 ((MainActivity) context).setMenu(dishes); //update menu for customer side
                 notifyDataSetChanged();
                 ((MainActivity) context).changeFragment(new ChefMenu()); //do this because it doesn't really update otherwise
-
             }
         });
 

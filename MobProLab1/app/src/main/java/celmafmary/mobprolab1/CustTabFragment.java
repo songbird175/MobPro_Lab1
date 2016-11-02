@@ -25,11 +25,8 @@ public class CustTabFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
         View rootView = inflater.inflate(R.layout.fragment_tab, container, false);
 
-
-//        mTabHost = new FragmentTabHost(getActivity());
         mTabHost = (FragmentTabHost) rootView.findViewById(R.id.tabhost);
         mTabHost.setup(getActivity(), getChildFragmentManager(), R.id.fragment_container);
 

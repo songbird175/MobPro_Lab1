@@ -12,13 +12,9 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 public class ChefOrderAdapterIngred extends ArrayAdapter<Ingredient> {
-    private ArrayList<Ingredient> ingredients;
-    private Context context;
 
     public ChefOrderAdapterIngred(Context context, ArrayList<Ingredient> ingredients) {
         super(context, 0, ingredients);
-        this.ingredients = ingredients;
-        this.context = context;
     }
 
     @Override

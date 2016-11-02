@@ -24,7 +24,6 @@ import java.util.ArrayList;
 public class ChefEditMenu extends Fragment {
     DishDbHelper dbHelper;
     FoodItem foodItem;
-    FoodItemAdapter foodItemAdapter;
     Boolean isNewFoodItem;
 
     public ChefEditMenu(){

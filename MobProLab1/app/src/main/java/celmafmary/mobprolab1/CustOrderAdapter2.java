@@ -28,7 +28,6 @@ public class CustOrderAdapter2 extends BaseExpandableListAdapter {
     private ArrayList<FoodItem> dishes;
     private Context context;
     private List<String> listDataHeader = new ArrayList<>();
-    //    private List<String> listIngredTemp = new ArrayList<>();
     private HashMap<String, List<String>> listDataChild = new HashMap<>();
 
     public CustOrderAdapter2(Context context, ArrayList<FoodItem> dishes) {

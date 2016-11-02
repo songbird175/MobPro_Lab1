@@ -20,18 +20,14 @@ import java.util.ArrayList;
 public class IngredientAdapter extends ArrayAdapter<Ingredient> {
 
     private ArrayList<Ingredient> ingredientList;
-    private Context context;
 
     public IngredientAdapter(Context context, ArrayList<Ingredient> ingredientItem){
         super(context, 0, ingredientItem);
         this.ingredientList = ingredientItem;
-        this.context = context;
-
     }
 
     @Override
     public View getView(final int position, View convertView, ViewGroup parent){
-//        final Ingredient ingredientItem = getItem(position);
         final Ingredient ingredientItem = ingredientList.get(position);
         if (convertView == null){
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.ingredient_item, parent, false);
@@ -41,9 +37,6 @@ public class IngredientAdapter extends ArrayAdapter<Ingredient> {
         Button deleteButton = (Button) convertView.findViewById(R.id.delete_ingredient);
         Button editButton = (Button) convertView.findViewById(R.id.edit_ingredient);
         individual_ingredient.setText(ingredientItem.getName());
-
-
-
 
         editButton.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -76,10 +69,8 @@ public class IngredientAdapter extends ArrayAdapter<Ingredient> {
             public void onClick(View view){
                 ingredientList.remove(position);
                 notifyDataSetChanged();
-
             }
         });
         return convertView;
-
 }
 }

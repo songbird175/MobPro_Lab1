@@ -19,15 +19,7 @@ public class Orders {
         return customer;
     }
 
-    public void setCustomer(String customer) {
-        this.customer = customer;
-    }
-
     public ArrayList<FoodItem> getOrderList() {
         return orderList;
-    }
-
-    public void setOrderList(ArrayList<FoodItem> orderList) {
-        this.orderList = orderList;
     }
 }

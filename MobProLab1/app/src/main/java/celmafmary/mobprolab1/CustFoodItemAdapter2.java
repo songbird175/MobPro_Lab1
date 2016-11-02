@@ -2,7 +2,6 @@ package celmafmary.mobprolab1;
 
 import android.content.Context;
 import android.graphics.Typeface;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -75,13 +74,13 @@ public class CustFoodItemAdapter2 extends BaseExpandableListAdapter {
            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                FoodItem selectedDish = dishes.get(groupPosition); //use position as index to find selected foodItem from list dishes
                ArrayList<FoodItem> currentOrder = ((MainActivity) context).getCurrentOrder(); //get current order and store as list currentDishes
-               if (isChecked == true){ //if it's checked, continue
+               if (isChecked){ //if it's checked, continue
                    currentOrder.add(selectedDish); //add selected dish to current order
                    checkedDishesName.add(selectedDish.getName()); //add dish name to list of checked items (so we can keep track of what's checked and what's not)
                    checkedDishes.put(selectedDish.getName(),selectedDish.getIngredients()); //add dish name and ingredients to map, keep track of checked dishes' ingredients
                    orderIndices.put(selectedDish.getName(),currentOrder.indexOf(selectedDish)); //add dish name and index of dish in currentOrder to keep track of checked dishes' indices (so we can make changes)
                }
-               else if (isChecked == false) {
+               else {
                    currentOrder.remove(selectedDish); //opposite of all the stuff above
                    checkedDishesName.remove(selectedDish.getName()); //ditto
                    checkedDishes.remove(selectedDish.getName()); //ditto
@@ -110,8 +109,11 @@ public class CustFoodItemAdapter2 extends BaseExpandableListAdapter {
         //create checkbox and check to see if the ingredient's dish is checked (if it's not, the ingredient can't be checked)
         final CheckBox ingred_checked = (CheckBox) convertView.findViewById(R.id.cust_add_ingred_checkbox);
         final FoodItem selectedDish = dishes.get(groupPosition); //use position as index to find selected foodItem from list dishes
-        if (checkedDishesName.contains(selectedDish.getName())){}
-        else {ingred_checked.setChecked(false);} //unchecks checkbox if dish isn't also selected (so we don't add ingredients below without a dish)
+
+        //unchecks checkbox if dish isn't also selected (so we don't add ingredients below without a dish)
+        if (!checkedDishesName.contains(selectedDish.getName())){
+            ingred_checked.setChecked(false);
+        }
 
         //gives EXCLUDE checkbox function -- creates listener that waits for a click and either removes the ingredient, adds it back, or does nothing
         ingred_checked.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -122,12 +124,13 @@ public class CustFoodItemAdapter2 extends BaseExpandableListAdapter {
                    ArrayList<Ingredient> checkedIngreds = checkedDishes.get(selectedDish.getName()); //get checked dish's ingredients
                    Ingredient selectedIng = dishes.get(groupPosition).getIngredients().get(childPosition); //get selected ingredient
 
-                   if (isChecked == false){
-                       if (checkedIngreds.contains(selectedIng)){} //if the ingredient is already part of the dish, do nothing (otherwise would have 2 because it starts with 1)
-                       else {
-                           checkedIngreds.add(selectedIng); //otherwise, add it
-                       }}
-                   else if (isChecked == true) {
+                   if (!isChecked){
+                       //only add the ingredient if it is not already part of the dish (otherwise would have 2 because it starts with 1)
+                       if (!checkedIngreds.contains(selectedIng)) {
+                           checkedIngreds.add(selectedIng);
+                       }
+                   }
+                   else {
                        checkedIngreds.remove(selectedIng); //remove the ingredient
                    }
                    checkedDishes.put(selectedDish.getName(),checkedIngreds); //put changed ingredient list back in hash map of dish names and their ingredients

@@ -76,11 +76,6 @@ public class MainActivity extends AppCompatActivity {
     public void setMenu(ArrayList<FoodItem> newMenu){
         menuList = newMenu;
     }
-    public void addToMenu(FoodItem foodItem){
-        menuList.add(foodItem);
-        DishDbHelper dbHelper = new DishDbHelper(getBaseContext()); //create SQL database helper
-        dbHelper.addToMenu(foodItem);
-    }
 
     public ArrayList<Orders> getOrders(){
         return orders;

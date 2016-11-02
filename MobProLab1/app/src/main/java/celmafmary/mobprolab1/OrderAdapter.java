@@ -113,8 +113,6 @@ public class OrderAdapter extends BaseExpandableListAdapter {
         Log.d("INGREDS",ingredientList.toString());
         ChefOrderAdapterIngred ingredientAdapter = new ChefOrderAdapterIngred(context,ingredientList);
         ListView ingredientLV = (ListView) convertView.findViewById(R.id.chef_order_ingredient_list);
-//        RelativeLayout.LayoutParams mParam = new RelativeLayout.LayoutParams((350),(30*ingredientList.size()));
-//        ingredientLV.setLayoutParams(mParam);
         ingredientLV.setAdapter(ingredientAdapter);
 
         return convertView;

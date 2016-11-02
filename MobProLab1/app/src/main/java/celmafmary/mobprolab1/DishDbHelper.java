@@ -40,7 +40,7 @@ public class DishDbHelper extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         values.put(DishTable.FeedEntryDish.DISH_FOOD_COLUMN_NAME, foodItem.getName());
         values.put(DishTable.FeedEntryDish.DISH_ING_COLUMN_NAME, arraytoString(foodItem.getIngredients()));
-        long newRowId = dbw.insert(DishTable.FeedEntryDish.DISH_TABLE_NAME, null, values);
+        dbw.insert(DishTable.FeedEntryDish.DISH_TABLE_NAME, null, values);
     }
 
     public void deleteRow(FoodItem foodItem) {
@@ -74,7 +74,6 @@ public class DishDbHelper extends SQLiteOpenHelper {
     }
 
     public void updateArray(long id, FoodItem foodItem){
-        ArrayList<FoodItem> foodArray = new ArrayList<>();
         SQLiteDatabase dbw = this.getReadableDatabase();
 
         ContentValues values = new ContentValues();
@@ -89,8 +88,6 @@ public class DishDbHelper extends SQLiteOpenHelper {
     }
 
     private ArrayList<Ingredient> fromStringtoIngredientArray (String string){
-
-        //String[] strings = string.replace("[", "").replace("]", "").split(", ");
         String[] strings = string.split(",");
         Log.d("DishHelp2", strings[0]);
         ArrayList<Ingredient> newArray = new ArrayList<>();
@@ -101,11 +98,9 @@ public class DishDbHelper extends SQLiteOpenHelper {
         }
         Log.d("DishHelper", newArray.get(0).getName());
         return newArray;
-
     }
 
     private String arraytoString (ArrayList<Ingredient> ingredients){
-
         StringBuilder sb = new StringBuilder();
         for (Ingredient s : ingredients){
             sb.append(s.getName());
